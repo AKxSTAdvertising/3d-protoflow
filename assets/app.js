@@ -381,6 +381,27 @@
           <div class="collection-info"><small>Collection ${num(cats.length + 1)}</small><h3>Custom Creations</h3><a href="contact.html">Make it yours ↗</a></div>
         </article>`;
 
+      // Keep the homepage concise: show only four products per collection.
+      // The collection page remains the destination for the complete product list.
+      const categorySections = cats.map((cat, i) => {
+        const preview = cat.products.slice(0, 4);
+        const moreLink = cat.products.length > 4
+          ? `<div class="section-link category-view-all"><a class="text-link" href="collections.html#cat-${encodeURIComponent(cat.id)}">View all ${escapeHTML(cat.title)} (${cat.products.length}) →</a></div>`
+          : "";
+        return `<section class="section home-category-section">
+          <div class="container">
+            <div class="section-head reveal">
+              <div><div class="eyebrow" style="color:#9b7449">Collection ${num(i + 1)}</div><h2>${escapeHTML(cat.title)}</h2></div>
+              <p>${escapeHTML(cat.blurb || "")}</p>
+            </div>
+            <div class="product-grid">${preview.map(productCard).join("")}</div>
+            ${moreLink}
+          </div>
+        </section>`;
+      }).join("");
+      const categoryMount = $("#homeCategorySections");
+      if (categoryMount) categoryMount.innerHTML = categorySections;
+
       const all = cats.flatMap(c => c.products);
       const picks = [...all.filter(p => p.badge), ...all.filter(p => !p.badge)].slice(0, 4);
       $("#featuredGrid").innerHTML = picks.map(productCard).join("");
