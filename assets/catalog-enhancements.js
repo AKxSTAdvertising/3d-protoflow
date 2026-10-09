@@ -4,8 +4,16 @@ const slug=s=>String(s||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u03
 const nav=document.querySelector(".nav-links");
 if(nav&&!nav.querySelector(".collection-menu")){
  const wrap=document.createElement("div");wrap.className="collection-menu";
- wrap.innerHTML='<a class="collection-menu-toggle" href="collections.html">Collections</a><div class="collection-menu-panel"><a href="collections.html">All collections</a><div class="collection-menu-categories" aria-label="Product categories"><span>Loading categories…</span></div></div>';
+ wrap.innerHTML='<a class="collection-menu-toggle" href="collections.html">Collections<span class="mobile-collection-arrow" aria-hidden="true">→</span></a><div class="collection-menu-panel"><a href="collections.html">All collections</a><div class="collection-menu-categories" aria-label="Product categories"><span>Loading categories…</span></div></div>';
  nav.append(wrap);
+ const toggle=wrap.querySelector(".collection-menu-toggle");
+ toggle.addEventListener("click",e=>{
+  if(window.matchMedia("(max-width:760px)").matches){
+   e.preventDefault();
+   const opened=wrap.classList.toggle("open");
+   toggle.setAttribute("aria-expanded",String(opened));
+  }
+ });
  fetch("products-template.csv",{cache:"no-store"}).then(r=>{if(!r.ok)throw Error();return r.text();}).then(text=>{
   const rows=[];let row=[],cell="",quoted=false;
   for(let i=0;i<text.length;i++){const ch=text[i];if(quoted){if(ch==='"'){if(text[i+1]==='"'){cell+='"';i++;}else quoted=false;}else cell+=ch;}else if(ch==='"')quoted=true;else if(ch===","){row.push(cell);cell="";}else if(ch==="\n"||ch==="\r"){if(ch==="\r"&&text[i+1]==="\n")i++;row.push(cell);rows.push(row);row=[];cell="";}else cell+=ch;}if(cell||row.length){row.push(cell);rows.push(row);}
