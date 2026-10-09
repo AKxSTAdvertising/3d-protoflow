@@ -378,3 +378,14 @@ footer{background:#241910;color:#f7ebdc;padding:60px 0 25px}
 .category-view-all{margin-top:26px}
 .category-view-all .text-link{display:inline-flex;align-items:center;gap:8px}
 @media(max-width:700px){.home-category-section{padding-top:48px;padding-bottom:48px}.category-view-all{margin-top:22px}}
+
+
+/* Product cards are links to detail pages; keep card actions off the listing cards. */
+a.product-card{display:block;color:inherit;text-decoration:none;cursor:pointer}
+.card-view-details{display:flex;align-items:center;justify-content:space-between;margin-top:13px;padding-top:10px;border-top:1px solid #e5d8c7;font-size:10px;letter-spacing:.35px;color:#75563a}
+a.product-card:hover .card-view-details{color:#9b7449}
+.recommendation-placeholder{pointer-events:none;opacity:.82}
+.recommendation-placeholder .product-image{background:linear-gradient(145deg,#eee5d8,#e3d3bd)}
+.recommendation-placeholder .product-info{min-height:48px}
+.recommendation-placeholder .price{font-size:10px;color:#8d7a66;white-space:normal}
+.size-choice input{max-width:180px}
