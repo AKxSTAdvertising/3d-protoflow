@@ -1,0 +1,38 @@
+(() => {
+"use strict";
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const slug = s => String(s || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
+const money = n => "₹" + Number(n || 0).toLocaleString("en-IN",{maximumFractionDigits:2});
+function parseCSV(text){
+ const rows=[];let row=[],cell="",quoted=false;
+ for(let i=0;i<text.length;i++){const c=text[i];if(quoted){if(c==='"'){if(text[i+1]==='"'){cell+='"';i++;}else quoted=false;}else cell+=c;}
+ else if(c==='"')quoted=true;else if(c===","){row.push(cell);cell="";}else if(c==="\n"||c==="\r"){if(c==="\r"&&text[i+1]==="\n")i++;row.push(cell);rows.push(row);row=[];cell="";}else cell+=c;}
+ if(cell||row.length){row.push(cell);rows.push(row);}return rows;
+}
+function load(){
+ return fetch("products-template.csv",{cache:"no-store"}).then(r=>{if(!r.ok)throw Error();return r.text();}).then(text=>{
+ const rows=parseCSV(text.replace(/^\uFEFF/,""));if(rows.length<2)return [];
+ const heads=rows[0].map(x=>x.trim().toLowerCase().replace(/\s+/g,"_"));
+ return rows.slice(1).map(row=>{const get=k=>{const i=heads.indexOf(k);return i<0?"":String(row[i]||"").trim();};
+ const imgs=(get("images")||get("image")).split(/[|;]/).map(x=>x.trim()).filter(Boolean);
+ return {id:get("product_id")||slug(get("name")),category:get("category"),name:get("name"),description:get("long_description")||get("description"),price:Number(get("price"))||0,basePrice:Number(get("base_price"))||Number(get("price"))||0,pricePerInch:Number(get("price_per_inch"))||0,pricingUnit:get("pricing_unit")||"fixed",minInches:Number(get("min_inches"))||1,maxInches:Number(get("max_inches"))||100,dimensions:get("dimensions"),material:get("material"),finish:get("finish"),images:imgs,active:!/^(no|n|false|0|hidden)$/i.test(get("active"))};
+ }).filter(p=>p.name&&p.active);
+ });
+}
+function imageURL(v){return /^https?:\/\//i.test(v)?v:"images/"+v.replace(/^\/+ /,"").replace(/^\//,"");}
+function render(p,all){
+ $("#productTitle").textContent=p.name;$("#productSubtitle").textContent=p.category||"Thoughtfully designed. Precisely made.";
+ const pics=p.images.map(imageURL);
+ const hasPics=pics.length>0;
+ $("#productDetail").innerHTML='<div class="product-breadcrumb"><a href="index.html">Home</a> / <a href="collections.html?category='+encodeURIComponent(slug(p.category))+'">'+esc(p.category)+'</a> / <span>'+esc(p.name)+'</span></div><div class="product-detail-layout"><div class="detail-gallery"><div class="detail-main-image" id="detailMain">'+(hasPics?'<img id="mainProductImage" src="'+esc(pics[0])+'" alt="'+esc(p.name)+'">':'<div class="detail-image-placeholder">Images coming soon</div>')+'</div>'+(pics.length>1?'<div class="detail-thumbnails">'+pics.map((src,i)=>'<button class="detail-thumb '+(!i?'active':'')+'" data-src="'+esc(src)+'" aria-label="View image '+(i+1)+'"><img src="'+esc(src)+'" alt=""></button>').join("")+'</div>':'')+'</div><div class="detail-copy"><div class="eyebrow" style="color:#9b7449">'+esc(p.category)+'</div><h1>'+esc(p.name)+'</h1><div class="detail-price" id="detailPrice">'+money(p.basePrice)+'</div><p class="detail-description">'+esc(p.description||"Thoughtfully designed 3D printed product.")+'</p>'+(p.dimensions?'<p class="detail-meta"><strong>Dimensions</strong> '+esc(p.dimensions)+'</p>':'')+(p.material?'<p class="detail-meta"><strong>Material</strong> '+esc(p.material)+'</p>':'')+(p.finish?'<p class="detail-meta"><strong>Finish</strong> '+esc(p.finish)+'</p>':'')+(p.pricingUnit==="inch"&&p.pricePerInch?'<div class="size-choice"><label for="productSize">Choose size (inches)</label><input id="productSize" type="number" min="'+p.minInches+'" max="'+p.maxInches+'" step="1" value="'+p.minInches+'"><p class="detail-note">Custom size pricing is based on the selected dimensions.</p></div>':'')+'<div class="detail-actions"><button class="btn btn-dark" id="enquireProduct">Enquire on WhatsApp ↗</button></div><p class="detail-note">Availability, custom dimensions and delivery charges are confirmed by our team.</p></div></div>';
+ const updatePrice=()=>{const size=$("#productSize");const price=size? p.basePrice + Math.max(p.minInches,Math.min(p.maxInches,Number(size.value)||p.minInches))*p.pricePerInch:p.basePrice;$("#detailPrice").textContent=money(price);return price;};
+ if($("#productSize"))$("#productSize").addEventListener("input",updatePrice);
+ document.addEventListener("click",e=>{const b=e.target.closest(".detail-thumb");if(!b)return;const im=$("#mainProductImage");if(im){im.src=b.dataset.src;document.querySelectorAll(".detail-thumb").forEach(x=>x.classList.toggle("active",x===b));}});
+ $("#enquireProduct").addEventListener("click",()=>{const size=$("#productSize");const price=updatePrice();const details=size?"Size: "+size.value+" inches\nCalculated price: "+money(price):"Listed price: "+money(price);const msg="Hello PROTOFLOW 3D, I'm interested in "+p.name+".\n"+details+"\nPlease confirm availability and delivery.";window.open("https://wa.me/918948681254?text="+encodeURIComponent(msg),"_blank","noopener");});
+ const rec=all.filter(x=>x.id!==p.id).filter(x=>x.category===p.category||x.images.length).slice(0,4);
+ $("#recommendedGrid").innerHTML=rec.length?rec.map(x=>'<a class="product-card product-detail-link" href="product.html?id='+encodeURIComponent(x.id)+'"><div class="product-image">'+(x.images.length?'<img src="'+esc(imageURL(x.images[0]))+'" alt="'+esc(x.name)+'" onerror="this.style.display=\'none\'">':'<div class="product-fallback">IMAGES COMING SOON</div>')+'</div><div class="product-info"><div><h3>'+esc(x.name)+'</h3><p>'+esc(x.description)+'</p></div><span class="price">'+money(x.basePrice)+'</span></div></a>').join(""):'<div class="empty-state">More products coming soon.</div>';
+}
+const id=new URLSearchParams(location.search).get("id");
+load().then(all=>{const p=all.find(x=>x.id===id||slug(x.name)===id);if(!p){$("#productDetail").innerHTML='<div class="empty-state"><h2>Product coming soon</h2><p>This product is not available yet.</p><a class="btn btn-dark" href="collections.html">Browse collections</a></div>';return;}render(p,all);}).catch(()=>{$("#productDetail").innerHTML='<div class="empty-state"><h2>Product details coming soon</h2><p>Our catalogue will be available here shortly.</p><a class="btn btn-dark" href="collections.html">Browse collections</a></div>';});
+})();
