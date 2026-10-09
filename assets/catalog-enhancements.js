@@ -4,19 +4,13 @@ const slug=s=>String(s||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u03
 const nav=document.querySelector(".nav-links");
 if(nav&&!nav.querySelector(".collection-menu")){
  const wrap=document.createElement("div");wrap.className="collection-menu";
- wrap.innerHTML='<button class="collection-menu-toggle" type="button" aria-expanded="false">Shop collections <span>⌄</span></button><div class="collection-menu-panel"><a href="collections.html">All collections</a><a href="collections.html?category=divine-sculptures">Divine Sculptures</a><a href="collections.html?category=home-decor">Home Decor</a><a href="collections.html?category=miniatures-collectibles">Miniatures & Collectibles</a><a href="collections.html?category=functional-utility">Functional & Utility</a><a href="collections.html?category=gifts-personalised">Gifts & Personalised</a></div>';
+ wrap.innerHTML='<a class="collection-menu-toggle" href="collections.html">Collections</a><div class="collection-menu-panel"><a href="collections.html">All collections</a><a href="collections.html?category=sculptures">Divine Sculptures</a><a href="collections.html?category=decor">Home Decor</a><a href="collections.html?category=miniatures">Miniatures & Collectibles</a><a href="collections.html?category=functional">Functional & Utility</a><a href="collections.html?category=gifts">Gifts & Personalised</a></div>';
  nav.append(wrap);
- const btn=wrap.querySelector("button");btn.addEventListener("click",()=>{const open=wrap.classList.toggle("open");btn.setAttribute("aria-expanded",String(open));});
- document.addEventListener("click",e=>{if(!wrap.contains(e.target)){wrap.classList.remove("open");btn.setAttribute("aria-expanded","false");}});
 }
 document.addEventListener("click",e=>{
  const card=e.target.closest(".product-card");
  if(card&&!e.target.closest("button")&&!e.target.closest("a")){
  const title=card.querySelector("h3");if(title)location.href="product.html?id="+encodeURIComponent(slug(title.textContent));
- }
- const link=e.target.closest(".collection-card a");
- if(link&&link.getAttribute("href")&&link.getAttribute("href").includes("#cat-")){
- const id=link.getAttribute("href").split("#cat-")[1];link.href="collections.html?category="+encodeURIComponent(id);
  }
 });
 function filterRequestedCategory(){
