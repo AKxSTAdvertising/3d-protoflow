@@ -367,3 +367,6 @@ footer{background:#241910;color:#f7ebdc;padding:60px 0 25px}
 
 /* Center hero benefits and trust points on small screens */
 @media(max-width:760px){.hero-bottom-inner{flex-direction:column;align-items:center;justify-content:center;gap:14px}.benefits{width:100%;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));justify-items:center;align-items:center;gap:14px 10px}.benefit{width:100%;justify-content:center;text-align:left;max-width:190px}.slider-controls{justify-content:center}.trust-inner{grid-template-columns:repeat(2,minmax(0,1fr))}.trust-item{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;min-height:92px;padding:18px 10px;border-right:1px solid #eee2d3;border-bottom:1px solid #eee2d3}.trust-item:nth-child(2n){border-right:0}.trust-item:nth-last-child(-n+2){border-bottom:0}.trust-item strong,.trust-item span{max-width:100%;overflow-wrap:anywhere}}
+
+/* Keep hero trust benefits centered on desktop as well */
+@media(min-width:761px){.hero-bottom-inner{position:relative;justify-content:center}.benefits{justify-content:center;margin-inline:auto}.slider-controls{position:absolute;right:0;top:50%;transform:translateY(-50%)}}
