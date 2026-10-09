@@ -301,20 +301,17 @@
 
   function productCard(p, index){
     const n = escapeHTML(p.name);
+    const href = "product.html?id=" + encodeURIComponent(String(p.name || "").toLowerCase().normalize("NFD").replace(/[\\u0300-\\u036f]/g,"").replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,""));
     return `
-      <article class="product-card" data-name="${n}" data-price="${p.price}" data-index="${index}">
+      <a class="product-card product-detail-link" href="${href}" data-name="${n}" data-price="${p.price}" data-index="${index}" aria-label="View ${n} details">
         <div class="product-image">
-          <span class="product-fallback">ADD PHOTO · ${n.toUpperCase()}</span>
+          <span class="product-fallback">PRODUCT IMAGE COMING SOON</span>
           ${p.img ? `<img src="${escapeHTML(imgSrc(p.img))}" alt="${n}" loading="lazy" onerror="this.style.display='none'">` : ""}
           ${p.badge ? `<span class="product-badge">${escapeHTML(p.badge)}</span>` : ""}
-          <button class="wishlist-btn" aria-label="Add ${n} to wishlist">♡</button>
         </div>
         <div class="product-info"><div><h3>${n}</h3><p>${escapeHTML(p.desc || "")}</p></div><span class="price">${money(p.price)}</span></div>
-        <div class="product-actions">
-          <button class="add-btn" data-add="${n}" data-price="${p.price}">Add to cart</button>
-          <button class="icon-btn quick-view" data-name="${n}" data-price="${p.price}" data-desc="${escapeHTML(p.desc || "")}" aria-label="Quick view">↗</button>
-        </div>
-      </article>`;
+        <span class="card-view-details">View details <span aria-hidden="true">↗</span></span>
+      </a>`;
   }
 
   // add to cart / wishlist / quick view — works on every page
@@ -402,13 +399,6 @@
       const categoryMount = $("#homeCategorySections");
       if (categoryMount) categoryMount.innerHTML = categorySections;
 
-      const categorySections = cats.map((cat, i) => {
-        const preview = cat.products.slice(0, 4);
-        const moreLink = cat.products.length > 4 ? `<div class="section-link category-view-all"><a class="text-link" href="collections.html#cat-${encodeURIComponent(cat.id)}">View all ${escapeHTML(cat.title)} (${cat.products.length}) →</a></div>` : "";
-        return `<section class="section home-category-section"><div class="container"><div class="section-head reveal"><div><div class="eyebrow" style="color:#9b7449">Collection ${String(i + 1).padStart(2, "0")}</div><h2>${escapeHTML(cat.title)}</h2></div><p>${escapeHTML(cat.blurb || "")}</p></div><div class="product-grid">${preview.map(productCard).join("")}</div>${moreLink}</div></section>`;
-      }).join("");
-      const categoryMount = $("#homeCategorySections");
-      if (categoryMount) categoryMount.innerHTML = categorySections;
       const all = cats.flatMap(c => c.products);
       const picks = [...all.filter(p => p.badge), ...all.filter(p => !p.badge)].slice(0, 4);
       $("#featuredGrid").innerHTML = picks.map(productCard).join("");
