@@ -8,8 +8,8 @@ if(nav&&!nav.querySelector(".collection-menu")){
  nav.append(wrap);
  fetch("products-template.csv",{cache:"no-store"}).then(r=>{if(!r.ok)throw Error();return r.text();}).then(text=>{
   const rows=[];let row=[],cell="",quoted=false;
-  for(let i=0;i<text.length;i++){const ch=text[i];if(quoted){if(ch==='"'){if(text[i+1]==='"'){cell+='"';i++;}else quoted=false;}else cell+=ch;}else if(ch==='"')quoted=true;else if(ch===","){row.push(cell);cell="";}else if(ch==="\\n"||ch==="\\r"){if(ch==="\\r"&&text[i+1]==="\\n")i++;row.push(cell);rows.push(row);row=[];cell="";}else cell+=ch;}if(cell||row.length){row.push(cell);rows.push(row);}
-  const heads=(rows.shift()||[]).map(x=>x.trim().toLowerCase().replace(/\\s+/g,"_")),ci=heads.indexOf("category"),ai=heads.indexOf("active"),unique=[];
+  for(let i=0;i<text.length;i++){const ch=text[i];if(quoted){if(ch==='"'){if(text[i+1]==='"'){cell+='"';i++;}else quoted=false;}else cell+=ch;}else if(ch==='"')quoted=true;else if(ch===","){row.push(cell);cell="";}else if(ch==="\n"||ch==="\r"){if(ch==="\r"&&text[i+1]==="\n")i++;row.push(cell);rows.push(row);row=[];cell="";}else cell+=ch;}if(cell||row.length){row.push(cell);rows.push(row);}
+  const heads=(rows.shift()||[]).map(x=>x.trim().toLowerCase().replace(/\s+/g,"_")),ci=heads.indexOf("category"),ai=heads.indexOf("active"),unique=[];
   rows.forEach(r=>{const name=(r[ci]||"").trim();const active=ai<0?"yes":(r[ai]||"yes").trim();if(name&&!/^(no|n|false|0|hidden)$/i.test(active)&&!unique.some(x=>x.name.toLowerCase()===name.toLowerCase()))unique.push({name,id:slug(name)});});
   const holder=wrap.querySelector(".collection-menu-categories");holder.innerHTML=unique.map(c=>'<a href="collections.html?category='+encodeURIComponent(c.id)+'">'+c.name.replace(/[&<>"]/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[ch]))+'</a>').join("")||'<span>No categories yet</span>';
  }).catch(()=>{const holder=wrap.querySelector(".collection-menu-categories");if(holder)holder.innerHTML='<a href="collections.html">Browse all collections</a>';});
