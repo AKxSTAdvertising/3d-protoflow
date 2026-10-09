@@ -317,6 +317,10 @@
           <button class="icon-btn quick-view" data-name="${n}" data-price="${p.price}" data-desc="${escapeHTML(p.desc || "")}" aria-label="Quick view">↗</button>
           <a class="icon-btn" href="${href}" aria-label="View product details">Details</a>
         </div>
+        <div class="product-actions product-actions-secondary">
+          <button class="product-action-link" data-enquire-product="${n}" data-price="${p.price}">WhatsApp Enquiry</button>
+          <button class="product-action-link product-buy-now" data-buy-now="${n}" data-price="${p.price}">Buy Now ↗</button>
+        </div>
       </article>`;
   }
 
@@ -325,7 +329,19 @@
     const add = e.target.closest(".add-btn");
     const wish = e.target.closest(".wishlist-btn");
     const quick = e.target.closest(".quick-view");
+    const enquiry = e.target.closest("[data-enquire-product]");
+    const buyNow = e.target.closest("[data-buy-now]");
     if (add) addToCart(add.dataset.add, add.dataset.price);
+    if (enquiry || buyNow) {
+      const name = (enquiry || buyNow).dataset.enquireProduct || (enquiry || buyNow).dataset.buyNow;
+      const price = (enquiry || buyNow).dataset.price;
+      const purpose = enquiry ? "I would like to know more about" : "I would like to order";
+      const message = "Hello PROTOFLOW 3D, " + purpose + " " + name + ". Listed price: " + money(price) + ". Please confirm availability, size options and delivery charges.";
+      const url = waLink(message);
+      const win = window.open(url, "_blank");
+      if (win) { try { win.opener = null; } catch(err){} }
+      else window.location.href = url;
+    }
     if (wish){
       const on = wish.classList.toggle("active");
       wish.textContent = on ? "♥" : "♡";
