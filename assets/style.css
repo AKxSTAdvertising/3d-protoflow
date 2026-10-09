@@ -370,3 +370,11 @@ footer{background:#241910;color:#f7ebdc;padding:60px 0 25px}
 
 /* Keep hero trust benefits centered on desktop as well */
 @media(min-width:761px){.hero-bottom-inner{position:relative;justify-content:center}.benefits{justify-content:center;margin-inline:auto}.slider-controls{position:absolute;right:0;top:50%;transform:translateY(-50%)}}
+
+/* Homepage collection previews: four products maximum, with a clear path to the full collection */
+.home-category-section{padding-top:64px;padding-bottom:64px}
+.home-category-section:nth-child(even){background:#f8f3eb}
+.home-category-section:nth-child(odd){background:#fffaf3}
+.category-view-all{margin-top:26px}
+.category-view-all .text-link{display:inline-flex;align-items:center;gap:8px}
+@media(max-width:700px){.home-category-section{padding-top:48px;padding-bottom:48px}.category-view-all{margin-top:22px}}
