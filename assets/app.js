@@ -283,19 +283,20 @@
   /*CSV-END*/
 
   async function loadCatalog(){
-    if (!CONFIG.sheetCsvUrl) return DEFAULT_CATEGORIES;
-    try {
-      const res = await fetch(CONFIG.sheetCsvUrl, {cache:"no-store"});
-      if (!res.ok) throw new Error("bad response");
-      const cats = categoriesFromCSV(await res.text());
-      if (!cats.length) throw new Error("empty sheet");
-      try { localStorage.setItem("protoflowCatalog", JSON.stringify(cats)); } catch(e){}
-      return cats;
-    } catch(e){
-      let cached = null;
-      try { cached = JSON.parse(localStorage.getItem("protoflowCatalog") || "null"); } catch(_){}
-      return Array.isArray(cached) && cached.length ? cached : DEFAULT_CATEGORIES;
+    const sources = CONFIG.sheetCsvUrl ? [CONFIG.sheetCsvUrl, "products-template.csv"] : ["products-template.csv"];
+    for (const source of sources) {
+      try {
+        const res = await fetch(source, {cache:"no-store"});
+        if (!res.ok) continue;
+        const cats = categoriesFromCSV(await res.text());
+        if (!cats.length) continue;
+        try { localStorage.setItem("protoflowCatalog", JSON.stringify(cats)); } catch(e){}
+        return cats;
+      } catch(e) {}
     }
+    let cached = null;
+    try { cached = JSON.parse(localStorage.getItem("protoflowCatalog") || "null"); } catch(_){}
+    return Array.isArray(cached) && cached.length ? cached : DEFAULT_CATEGORIES;
   }
 
   function productCard(p, index){
