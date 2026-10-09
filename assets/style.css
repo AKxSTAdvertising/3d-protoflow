@@ -389,3 +389,11 @@ a.product-card:hover .card-view-details{color:#9b7449}
 .recommendation-placeholder .product-info{min-height:48px}
 .recommendation-placeholder .price{font-size:10px;color:#8d7a66;white-space:normal}
 .size-choice input{max-width:180px}
+
+/* Product card actions: keep cart, quick view, details, enquiry and buy-now available */
+.product-actions-secondary{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
+.product-action-link{display:inline-flex;align-items:center;justify-content:center;min-height:36px;padding:9px 10px;border:1px solid #d8c8b4;background:transparent;color:#39271b;font:500 10px var(--mono);text-align:center;cursor:pointer;text-decoration:none}
+.product-action-link:hover{background:#eee4d5}
+.product-buy-now{background:#39271b;border-color:#39271b;color:#fff}
+.product-buy-now:hover{background:#62472f;color:#fff}
+@media(max-width:480px){.product-actions{gap:5px}.product-actions .icon-btn{padding:8px 6px}.product-actions-secondary{grid-template-columns:1fr 1fr}.product-action-link{font-size:9px;padding:8px 5px}}
