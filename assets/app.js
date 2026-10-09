@@ -197,13 +197,13 @@
      from your Google Sheet instead (categories are created automatically).
      ===================================================================== */
   const DEFAULT_CATEGORIES = [
-    {id:"sculptures", title:"Divine Sculptures", blurb:"Detailed idols and statues crafted to bring peace and presence to your space.", products:[
-      {name:"Divine Sculpture", desc:"Detailed statement piece", price:1499, img:"product-divine-sculpture.jpg", badge:"Bestseller"},
+    {id:"divine-creations", title:"Divine Creations", blurb:"Detailed idols and meaningful designs crafted to bring peace and presence to your space.", products:[
+      {name:"Divine Creation", desc:"Detailed statement piece", price:1499, img:"product-divine-sculpture.jpg", badge:"Bestseller"},
       {name:"Lord Ganesha Idol", desc:"Home temple & desk", price:999, img:"product-ganesha.jpg"},
       {name:"Meditating Buddha", desc:"Calm, minimal form", price:1299, img:"product-buddha.jpg"},
       {name:"Krishna Flute Statue", desc:"Fine detailed finish", price:1199, img:"product-krishna.jpg", badge:"New"}
     ]},
-    {id:"decor", title:"Home Decor", blurb:"Vases, planters, lamps and wall pieces with a modern sculptural touch.", products:[
+    {id:"decor", title:"Home Decor", blurb:"Vases, planters, lamps and wall pieces with a modern contemporary touch.", products:[
       {name:"Arc Form Vase", desc:"Minimal modern decor", price:899, img:"product-arc-vase.jpg"},
       {name:"Geometric Planter", desc:"For small indoor plants", price:599, img:"product-planter.jpg"},
       {name:"Abstract Wall Art", desc:"Textured 3D wall piece", price:1199, img:"product-wall-art.jpg"},
