@@ -1,4 +1,4 @@
-category,category_description,category_image,name,description,price,image,badge,active,product_id,images,long_description,base_price,price_per_inch,pricing_unit,min_inches,max_inches,dimensions,material,finish,stock
+category,category_description,category_image,name,description,price,image,badge,active,product_id,images,long_description,base_price,price_per_inch,pricing_unit,min_inches,max_inches,dimensions,material,finish,stock,care_instructions,shipping_info,return_policy
 "Divine Sculptures","Detailed idols and statues crafted to bring peace and presence to your space.","","Divine Sculpture","Detailed statement piece","1499","product-divine-sculpture.jpg","Bestseller","yes",,,,,,,,,,,,
 "Divine Sculptures","","","Lord Ganesha Idol","Home temple & desk","999","product-ganesha.jpg","","yes",,,,,,,,,,,,
 "Divine Sculptures","","","Meditating Buddha","Calm, minimal form","1299","product-buddha.jpg","","yes",,,,,,,,,,,,
