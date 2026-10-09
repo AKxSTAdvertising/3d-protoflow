@@ -204,7 +204,7 @@
       {name:"Krishna Flute Statue", desc:"Fine detailed finish", price:1199, img:"product-krishna.jpg", badge:"New"}
     ]},
     {id:"decor", title:"Home Decor", blurb:"Vases, planters, lamps and wall pieces with a modern sculptural touch.", products:[
-      {name:"Arc Form Vase", desc:"Minimal sculptural decor", price:899, img:"product-arc-vase.jpg"},
+      {name:"Arc Form Vase", desc:"Minimal modern decor", price:899, img:"product-arc-vase.jpg"},
       {name:"Geometric Planter", desc:"For small indoor plants", price:599, img:"product-planter.jpg"},
       {name:"Abstract Wall Art", desc:"Textured 3D wall piece", price:1199, img:"product-wall-art.jpg"},
       {name:"Designer Lamp Shade", desc:"Soft patterned light", price:1399, img:"product-lamp.jpg"}
