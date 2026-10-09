@@ -303,15 +303,21 @@
     const n = escapeHTML(p.name);
     const href = "product.html?id=" + encodeURIComponent(String(p.name || "").toLowerCase().normalize("NFD").replace(/[\\u0300-\\u036f]/g,"").replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,""));
     return `
-      <a class="product-card product-detail-link" href="${href}" data-name="${n}" data-price="${p.price}" data-index="${index}" aria-label="View ${n} details">
-        <div class="product-image">
-          <span class="product-fallback">PRODUCT IMAGE COMING SOON</span>
-          ${p.img ? `<img src="${escapeHTML(imgSrc(p.img))}" alt="${n}" loading="lazy" onerror="this.style.display='none'">` : ""}
-          ${p.badge ? `<span class="product-badge">${escapeHTML(p.badge)}</span>` : ""}
+      <article class="product-card" data-name="${n}" data-price="${p.price}" data-index="${index}">
+        <a class="product-card-main product-detail-link" href="${href}" aria-label="View ${n} details">
+          <div class="product-image">
+            <span class="product-fallback">PRODUCT IMAGE COMING SOON</span>
+            ${p.img ? `<img src="${escapeHTML(imgSrc(p.img))}" alt="${n}" loading="lazy" onerror="this.style.display='none'">` : ""}
+            ${p.badge ? `<span class="product-badge">${escapeHTML(p.badge)}</span>` : ""}
+          </div>
+          <div class="product-info"><div><h3>${n}</h3><p>${escapeHTML(p.desc || "")}</p></div><span class="price">${money(p.price)}</span></div>
+        </a>
+        <div class="product-actions">
+          <button class="add-btn" data-add="${n}" data-price="${p.price}">Add to cart</button>
+          <button class="icon-btn quick-view" data-name="${n}" data-price="${p.price}" data-desc="${escapeHTML(p.desc || "")}" aria-label="Quick view">↗</button>
+          <a class="icon-btn" href="${href}" aria-label="View product details">Details</a>
         </div>
-        <div class="product-info"><div><h3>${n}</h3><p>${escapeHTML(p.desc || "")}</p></div><span class="price">${money(p.price)}</span></div>
-        <span class="card-view-details">View details <span aria-hidden="true">↗</span></span>
-      </a>`;
+      </article>`;
   }
 
   // add to cart / wishlist / quick view — works on every page
