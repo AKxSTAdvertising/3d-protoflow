@@ -5,7 +5,7 @@
      SETTINGS — change these in ONE place, they apply to every page
      ===================================================================== */
   const CONFIG = {
-    businessEmail: "hello@protoflow3d.com",   // your real email
+    businessEmail: "itsshailesh0414@gmail.com",   // your real email
     whatsappNumber: "918948681254",           // country code 91 + number, no + or spaces
     sheetCsvUrl: ""                           // Google Sheet "Publish to web" CSV link (optional)
   };
