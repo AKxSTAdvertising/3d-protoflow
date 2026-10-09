@@ -336,3 +336,21 @@ footer{background:#241910;color:#f7ebdc;padding:60px 0 25px}
 .collection-menu-panel a{font-size:12px;padding:11px 12px;border-radius:2px}
 .collection-menu-panel a:hover{background:#efe4d4}
 @media(max-width:760px){.product-detail-layout{grid-template-columns:1fr}.detail-copy h1{font-size:36px}.product-page-banner{padding-top:105px}.collection-menu{display:block;width:100%}.collection-menu-toggle{padding:12px 0;width:100%;text-align:left}.collection-menu-panel{position:static;box-shadow:none;margin:4px 0 8px}.nav-links.open .collection-menu-panel{display:grid}}
+
+
+/* Collections navigation: hover dropdown, transparent dark panel, no arrow */
+.collection-menu{position:relative;display:inline-flex;align-items:center;height:100%}
+.collection-menu-toggle{display:inline-flex;align-items:center;font-size:11px;color:#f2e7d9;padding:24px 0;white-space:nowrap;position:relative}
+.collection-menu-toggle:after{content:"";height:1px;position:absolute;bottom:16px;left:0;width:0;background:var(--gold);transition:width .25s}
+.collection-menu:hover .collection-menu-toggle:after,.collection-menu:focus-within .collection-menu-toggle:after{width:100%}
+.collection-menu-panel{display:none;position:absolute;top:100%;left:-20px;min-width:250px;padding:9px;background:rgba(28,18,11,.97);border:1px solid rgba(238,205,158,.24);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 18px 36px rgba(0,0,0,.28);z-index:100}
+.collection-menu:hover .collection-menu-panel,.collection-menu:focus-within .collection-menu-panel{display:grid}
+.collection-menu-panel a{font-size:11px;color:#f7ecdf;padding:12px 13px;display:block;white-space:nowrap;transition:background .2s,color .2s}
+.collection-menu-panel a:after{display:none!important}
+.collection-menu-panel a:hover,.collection-menu-panel a:focus-visible{background:rgba(217,179,122,.16);color:#f0d4a5;outline:none}
+@media(max-width:760px){
+ .collection-menu{display:block;width:100%;height:auto}
+ .collection-menu-toggle{padding:12px 0;width:100%}
+ .collection-menu-panel{position:static;box-shadow:none;border:0;border-left:1px solid rgba(238,205,158,.25);margin:0 0 8px 8px;padding:4px 0;background:rgba(28,18,11,.55)}
+ .nav-links.open .collection-menu-panel{display:grid}
+}
