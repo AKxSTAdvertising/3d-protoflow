@@ -433,3 +433,14 @@ a.product-card:hover .card-view-details{color:#9b7449}
   .product-grid{gap:22px 9px;}
   .product-actions,.product-actions-secondary{grid-template-columns:minmax(0,1fr);}
 }
+
+
+/* Final action-row correction: keep every existing action in its own aligned slot */
+.product-actions{grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1fr);}
+.product-actions-secondary{grid-template-columns:minmax(0,1fr) minmax(0,1fr);}
+@media(max-width:700px){
+  .product-actions{grid-template-columns:minmax(0,1fr) minmax(0,.58fr) minmax(0,1fr);gap:5px;}
+  .product-actions .add-btn,.product-actions .icon-btn{padding:8px 3px;font-size:9px;min-height:40px;}
+  .product-actions-secondary{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:6px;}
+  .product-actions-secondary .product-action-link{padding:9px 4px;font-size:9px;min-height:42px;}
+}
