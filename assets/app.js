@@ -94,6 +94,16 @@
   });
   // Collections category menu opens on hover/focus; the Collection link itself navigates.
 
+  // The Home menu is a normal navigation shortcut: skip the cinematic intro once.
+  // A logo click intentionally returns to the full intro; ordinary page refreshes also play it.
+  const homeNavLink = $("#navLinks > a[href='index.html']");
+  if (homeNavLink) homeNavLink.addEventListener("click", () => {
+    try { sessionStorage.setItem("pfSkipIntroOnce", "1"); } catch (e) {}
+  });
+  $(".brand").forEach(link => link.addEventListener("click", () => {
+    try { sessionStorage.removeItem("pfSkipIntroOnce"); } catch (e) {}
+  }));
+
   /* ---------- toast + popup ---------- */
   let toastTimer;
   function toast(msg){
