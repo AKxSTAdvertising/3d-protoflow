@@ -1748,3 +1748,25 @@ body[data-page="collections"] textarea::placeholder {
   color:#fff!important;
   opacity:1!important;
 }
+
+/* COLLECTIONS PAGE FINAL FIX — banner contrast and compact transition to filters */
+body[data-page="collections"] .page-banner .eyebrow,
+body[data-page="collections"] .page-banner h1,
+body[data-page="collections"] .page-banner p {
+  color:#fff!important;
+}
+body[data-page="collections"] .page-banner {
+  padding-bottom:10px!important;
+}
+body[data-page="collections"] .section.shop {
+  padding-top:10px!important;
+}
+@media(max-width:700px) {
+  body[data-page="collections"] .page-banner {
+    padding-top:82px!important;
+    padding-bottom:8px!important;
+  }
+  body[data-page="collections"] .section.shop {
+    padding-top:8px!important;
+  }
+}
