@@ -893,3 +893,9 @@ footer{background:#0c0a0d;color:#e9dfd1;border-top:1px solid rgba(214,180,119,.1
   .nav-dropdown-menu a{color:#fffaf3!important}
   .nav-dropdown-menu a:hover,.nav-dropdown-menu a:focus-visible{background:#e7c99f!important;color:#241a14!important}
 }
+
+
+/* Ensure only the dropdown control appears in the header, never a duplicate direct Collections link */
+.site-header #navLinks > a[href="collections.html"],
+.site-header #navLinks > a[href^="collections.html?"],
+.site-header #navLinks > a[href^="collections.html#"]{display:none!important}
