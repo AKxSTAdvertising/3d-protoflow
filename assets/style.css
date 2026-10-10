@@ -1730,3 +1730,21 @@ body[data-page="category"] .category-products-section .product-card{
   .nav-dropdown .nav-dropdown-toggle{width:auto!important;min-width:34px;padding:13px 8px!important}
   .nav-dropdown-menu{flex-basis:100%;width:100%;margin:0 0 8px 0!important}
 }
+
+/* COLLECTIONS PAGE — force every text element to bright white */
+body[data-page="collections"] :is(
+  h1,h2,h3,h4,h5,h6,p,span,small,strong,em,b,i,label,a,button,
+  li,summary,dt,dd,th,td,legend,figcaption,output
+) {
+  color:#fff!important;
+}
+body[data-page="collections"] input,
+body[data-page="collections"] select,
+body[data-page="collections"] textarea {
+  color:#fff!important;
+}
+body[data-page="collections"] input::placeholder,
+body[data-page="collections"] textarea::placeholder {
+  color:#fff!important;
+  opacity:1!important;
+}
