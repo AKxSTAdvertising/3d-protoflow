@@ -20,7 +20,6 @@
         <g class="pf-part pf-letter-d"><path d="M224 170H266C302 170 322 194 322 230C322 267 300 288 266 288H224Z" fill="url(#pfGold)" stroke="#101114" stroke-width="8" stroke-linejoin="round"/><path d="M246 193V266H264C286 266 299 252 299 230C299 208 286 193 264 193Z" fill="#f8f7f4" stroke="#101114" stroke-width="7" stroke-linejoin="round"/></g>
         <g class="pf-part pf-rail-base"><path d="M55 293H365Q382 293 382 310Q382 327 365 327H55Q37 327 37 310Q37 293 55 293Z" fill="url(#pfSteel)" stroke="#101114" stroke-width="8" stroke-linejoin="round"/></g>
       </svg>
-      <div class="pf-entry-brand">PROTOFLOW <b>3D</b></div>
       <div class="pf-entry-caption">ART, SHAPED IN ANOTHER DIMENSION</div>
       <div class="pf-entry-line"><span></span></div>
     </div>`;
