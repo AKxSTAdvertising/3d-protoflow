@@ -1137,3 +1137,112 @@ footer{background:#0c0a0d;color:#e9dfd1;border-top:1px solid rgba(214,180,119,.1
 .product-detail-section .recommendation-placeholder .product-image{
   background:#dfcbb0!important;
 }
+
+
+/* Product detail contrast pass: dark showroom surface with soft-white typography */
+body[data-page="product"] .product-detail-section{
+  background:#241a14!important;
+  color:#fffaf3!important;
+}
+body[data-page="product"] .product-detail-section .product-breadcrumb,
+body[data-page="product"] .product-detail-section .product-breadcrumb a,
+body[data-page="product"] .product-detail-section .product-breadcrumb span,
+body[data-page="product"] .product-detail-section .detail-copy,
+body[data-page="product"] .product-detail-section .detail-copy h1,
+body[data-page="product"] .product-detail-section .detail-copy p,
+body[data-page="product"] .product-detail-section .detail-copy label,
+body[data-page="product"] .product-detail-section .detail-copy .detail-meta,
+body[data-page="product"] .product-detail-section .detail-copy .detail-meta strong,
+body[data-page="product"] .product-detail-section .product-extra-details,
+body[data-page="product"] .product-detail-section .product-extra-block,
+body[data-page="product"] .product-detail-section .product-extra-block h3,
+body[data-page="product"] .product-detail-section .product-extra-block p,
+body[data-page="product"] .product-detail-section .product-extra-block a{
+  color:#fffaf3!important;
+}
+body[data-page="product"] .product-detail-section .detail-copy .eyebrow{
+  color:#d7b17d!important;
+}
+body[data-page="product"] .product-detail-section .detail-price{
+  color:#f1d5a8!important;
+}
+body[data-page="product"] .product-detail-section .detail-note{
+  color:#e0d2c2!important;
+}
+body[data-page="product"] .product-detail-section .size-choice{
+  background:#34261d!important;
+  border-color:#806346!important;
+  color:#fffaf3!important;
+}
+body[data-page="product"] .product-detail-section .size-choice>label,
+body[data-page="product"] .product-detail-section .custom-size-wrap label{
+  color:#fffaf3!important;
+}
+body[data-page="product"] .product-detail-section .size-preset{
+  background:#4a382b!important;
+  border-color:#987653!important;
+  color:#fffaf3!important;
+}
+body[data-page="product"] .product-detail-section .size-preset.active{
+  background:#f1d5a8!important;
+  border-color:#f1d5a8!important;
+  color:#241a14!important;
+}
+body[data-page="product"] .product-detail-section .size-preset.size-custom{
+  background:#b99163!important;
+  border-color:#b99163!important;
+  color:#241a14!important;
+}
+body[data-page="product"] .product-detail-section .size-preset.size-custom.active{
+  background:#f1d5a8!important;
+  color:#241a14!important;
+}
+body[data-page="product"] .product-detail-section .custom-size-wrap input{
+  background:#fffaf3!important;
+  border-color:#bda184!important;
+  color:#241a14!important;
+}
+body[data-page="product"] .product-detail-section .detail-enquire-link{
+  color:#f1d5a8!important;
+}
+body[data-page="product"] .product-detail-section .detail-main-image{
+  background:#e9ddca!important;
+  border-color:#806346!important;
+}
+body[data-page="product"] .product-detail-section .detail-thumb{
+  background:#34261d!important;
+  border-color:#806346!important;
+}
+body[data-page="product"] .product-detail-section .detail-thumb.active{
+  border-color:#f1d5a8!important;
+}
+
+/* Recommended products live in their own section below product details */
+body[data-page="product"] .recommended-section{
+  background:#f5f1e8!important;
+  color:#35291f!important;
+}
+body[data-page="product"] .recommended-section .section-head h2,
+body[data-page="product"] .recommended-section .section-head p{
+  color:#35291f!important;
+}
+body[data-page="product"] .recommended-section .section-head .eyebrow{
+  color:#9b7449!important;
+}
+body[data-page="product"] .recommended-section #recommendedGrid .product-card{
+  background:#eae2d4!important;
+  border:1px solid #d0b99a!important;
+  color:#35291f!important;
+}
+body[data-page="product"] .recommended-section #recommendedGrid .product-image{
+  background:#dfcbb0!important;
+}
+body[data-page="product"] .recommended-section #recommendedGrid .product-info,
+body[data-page="product"] .recommended-section #recommendedGrid .product-info h3,
+body[data-page="product"] .recommended-section #recommendedGrid .product-info p,
+body[data-page="product"] .recommended-section #recommendedGrid .product-fallback{
+  color:#35291f!important;
+}
+body[data-page="product"] .recommended-section #recommendedGrid .price{
+  color:#795532!important;
+}
