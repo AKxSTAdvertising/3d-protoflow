@@ -1042,3 +1042,59 @@ footer{background:#0c0a0d;color:#e9dfd1;border-top:1px solid rgba(214,180,119,.1
  #featuredGrid .product-image img,
  #homeCategorySections .product-image img{padding:8px!important}
 }
+
+
+/* Final product size selector: compact, warm theme, no always-visible manual field */
+.product-detail-section .size-choice{
+  background:#e9ddca!important;
+  border:1px solid #c9ad89!important;
+  border-radius:4px!important;
+  padding:11px!important;
+  color:#39271b!important;
+}
+.product-detail-section .size-preset-grid{gap:5px!important}
+.product-detail-section .size-preset{
+  min-width:31px!important;
+  width:31px!important;
+  height:29px!important;
+  padding:3px!important;
+  border-radius:3px!important;
+  border:1px solid #bda184!important;
+  background:#d8c4aa!important;
+  color:#39271b!important;
+  font-size:10px!important;
+}
+.product-detail-section .size-preset.active{
+  background:#39271b!important;
+  color:#fff0dc!important;
+  border-color:#39271b!important;
+}
+.product-detail-section .size-preset.size-custom{
+  width:auto!important;
+  min-width:48px!important;
+  padding:3px 7px!important;
+  background:#b99163!important;
+  color:#24170f!important;
+  border-color:#9c744b!important;
+}
+.product-detail-section .size-preset.size-custom.active{
+  background:#39271b!important;
+  color:#fff0dc!important;
+}
+.product-detail-section .custom-size-wrap{margin-top:9px!important}
+.product-detail-section .custom-size-wrap[hidden]{display:none!important}
+.product-detail-section .custom-size-wrap input{
+  background:#f0e4d3!important;
+  color:#39271b!important;
+  border:1px solid #bda184!important;
+}
+.product-detail-section .size-choice .detail-note{color:#72563d!important}
+.product-detail-section .detail-main-image,
+.product-detail-section .product-image{background:#e9ddca!important}
+.product-detail-section .detail-copy,
+.product-detail-section .product-extra-details,
+.product-detail-section .product-extra-block{color:#39271b}
+@media(max-width:760px){
+ .product-detail-section .size-preset{min-width:30px!important;width:30px!important;height:29px!important;font-size:10px!important}
+ .product-detail-section .size-preset.size-custom{width:auto!important;min-width:46px!important}
+}
