@@ -22,9 +22,9 @@
      ===================================================================== */
   const NAV = [
     ["home", "index.html", "Home"],
-    ["collections", "collections.html", "Collections"],
-    ["about", "about.html", "About"],
-    ["contact", "contact.html", "Contact"]
+    ["collections", "collections.html", "Collection"],
+    ["about", "about.html", "About Us"],
+    ["contact", "contact.html", "Contact Us"]
   ];
   const logo = '<span class="brand-mark"></span><span>PROTOFLOW <span>3D</span></span>';
 
@@ -33,9 +33,9 @@
       <div class="container navbar">
         <a class="brand" href="index.html" aria-label="PROTOFLOW 3D home">${logo}</a>
         <nav class="nav-links" id="navLinks" aria-label="Main navigation">
-          ${NAV.filter(([id]) => id !== "collections").map(([id, href, label]) => `<a href="${href}"${id === PAGE ? ' class="active" aria-current="page"' : ""}>${label}</a>`).join("")}
+          <a href="index.html"${PAGE === "home" ? ' class="active" aria-current="page"' : ""}>Home</a>
           <div class="nav-dropdown">
-            <a href="collections.html"${PAGE === "collections" ? ' class="active" aria-current="page"' : ""}>Collections</a>
+            <a href="collections.html"${PAGE === "collections" ? ' class="active" aria-current="page"' : ""}>Collection</a>
             <button class="nav-dropdown-toggle" id="collectionsToggle" aria-label="Open collection categories" aria-expanded="false" aria-controls="collectionsMenu">⌄</button>
             <div class="nav-dropdown-menu" id="collectionsMenu">
               <a href="divine-creations.html">Divine Creations</a>
@@ -45,6 +45,8 @@
               <a href="gifts-personalised.html">Gifts &amp; Personalised</a>
             </div>
           </div>
+          <a href="about.html"${PAGE === "about" ? ' class="active" aria-current="page"' : ""}>About Us</a>
+          <a href="contact.html"${PAGE === "contact" ? ' class="active" aria-current="page"' : ""}>Contact Us</a>
         </nav>
         <div class="nav-actions">
           <a class="icon-btn" id="searchLink" href="collections.html?search=1" aria-label="Search products"><svg viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.5"/><path d="m16 16 4 4"/></svg></a>
