@@ -35,7 +35,8 @@
         <nav class="nav-links" id="navLinks" aria-label="Main navigation">
           ${NAV.filter(([id]) => id !== "collections").map(([id, href, label]) => `<a href="${href}"${id === PAGE ? ' class="active" aria-current="page"' : ""}>${label}</a>`).join("")}
           <div class="nav-dropdown">
-            <button class="nav-dropdown-toggle${PAGE === "collections" ? " active" : ""}" id="collectionsToggle" aria-expanded="false" aria-controls="collectionsMenu">Collections</button>
+            <a href="collections.html"${PAGE === "collections" ? ' class="active" aria-current="page"' : ""}>Collections</a>
+            <button class="nav-dropdown-toggle" id="collectionsToggle" aria-label="Open collection categories" aria-expanded="false" aria-controls="collectionsMenu">⌄</button>
             <div class="nav-dropdown-menu" id="collectionsMenu">
               <a href="divine-creations.html">Divine Creations</a>
               <a href="home-decor.html">Home Decor</a>
