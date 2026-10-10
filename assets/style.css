@@ -651,3 +651,30 @@ footer{background:#0c0a0d;color:#e9dfd1;border-top:1px solid rgba(214,180,119,.1
 @keyframes pf-entry-progress{to{transform:translateX(0)}}
 .pf-entry-brand,.pf-entry-caption{transform:translateY(8px)}
 @media(prefers-reduced-motion:reduce){.pf-entry,.pf-entry *{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+
+
+/* PROTOFLOW logo assembly: parts fly in, rotate independently, then lock inside the ring */
+.pf-entry.pf-entry-logo{gap:0;padding:24px}
+.pf-entry-logo .pf-entry-stage{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;width:min(92vw,540px);z-index:1}
+.pf-entry-logo .pf-entry-ring{position:absolute;width:min(82vw,440px);aspect-ratio:1;border:1px solid rgba(224,183,104,.8);border-radius:50%;box-shadow:0 0 22px rgba(224,183,104,.12),inset 0 0 28px rgba(224,183,104,.06);opacity:0;transform:scale(.25) rotate(-90deg);animation:pf-ring-lock 1.2s .2s cubic-bezier(.2,.8,.2,1) forwards}
+.pf-entry-logo .pf-entry-ring:before,.pf-entry-logo .pf-entry-ring:after{content:"";position:absolute;inset:12px;border:1px dashed rgba(224,183,104,.3);border-radius:50%;animation:pf-entry-ring 9s linear infinite}
+.pf-entry-logo .pf-entry-ring:after{inset:25px;border-style:solid;opacity:.35;animation-direction:reverse}
+.pf-logo-build{position:relative;width:min(80vw,410px);height:auto;overflow:visible;z-index:2;filter:drop-shadow(0 12px 24px rgba(0,0,0,.25))}
+.pf-logo-build .pf-part{transform-box:fill-box;transform-origin:center;opacity:0}
+.pf-logo-build .pf-rail-top{animation:pf-rail-in .95s .3s cubic-bezier(.2,.8,.2,1) forwards}
+.pf-logo-build .pf-print-head{animation:pf-head-in 1s .58s cubic-bezier(.2,.8,.2,1) forwards}
+.pf-logo-build .pf-letter-three{animation:pf-three-in 1.05s .78s cubic-bezier(.2,.8,.2,1) forwards}
+.pf-logo-build .pf-letter-d{animation:pf-d-in 1.05s .98s cubic-bezier(.2,.8,.2,1) forwards}
+.pf-logo-build .pf-rail-base{animation:pf-base-in .9s 1.2s cubic-bezier(.2,.8,.2,1) forwards}
+.pf-logo-build .pf-wordmark{animation:pf-word-in .7s 1.55s ease forwards}
+.pf-entry-logo .pf-entry-brand{margin-top:10px;font-family:"DM Sans",sans-serif;font-size:clamp(18px,3vw,25px);letter-spacing:.18em;animation:pf-entry-text .7s 1.6s ease forwards}
+.pf-entry-logo .pf-entry-caption{margin-top:12px;text-align:center;font-size:9px}
+.pf-entry-logo .pf-entry-line{margin-top:20px;width:min(210px,55vw)}
+@keyframes pf-ring-lock{0%{opacity:0;transform:scale(.2) rotate(-120deg)}65%{opacity:1;transform:scale(1.05) rotate(12deg)}100%{opacity:1;transform:scale(1) rotate(0)}}
+@keyframes pf-rail-in{0%{opacity:0;transform:translate(-130px,-60px) rotate(-28deg) scale(.8)}70%{opacity:1;transform:translate(5px,3px) rotate(4deg)}100%{opacity:1;transform:translate(0) rotate(0)}}
+@keyframes pf-head-in{0%{opacity:0;transform:translate(85px,-90px) rotate(150deg) scale(.65)}70%{opacity:1;transform:translate(-3px,3px) rotate(-8deg)}100%{opacity:1;transform:translate(0) rotate(0)}}
+@keyframes pf-three-in{0%{opacity:0;transform:translate(-85px,80px) rotate(-110deg) scale(.6)}75%{opacity:1;transform:translate(3px,-3px) rotate(8deg)}100%{opacity:1;transform:translate(0) rotate(0)}}
+@keyframes pf-d-in{0%{opacity:0;transform:translate(100px,65px) rotate(105deg) scale(.65)}75%{opacity:1;transform:translate(-3px,-3px) rotate(-6deg)}100%{opacity:1;transform:translate(0) rotate(0)}}
+@keyframes pf-base-in{0%{opacity:0;transform:translate(0,90px) rotate(8deg) scaleX(.35)}75%{opacity:1;transform:translate(0,-3px) rotate(-2deg) scaleX(1.02)}100%{opacity:1;transform:translate(0) rotate(0) scaleX(1)}}
+@keyframes pf-word-in{0%{opacity:0;transform:translateY(20px);letter-spacing:8px}100%{opacity:1;transform:translateY(0);letter-spacing:1.2px}}
+@media(prefers-reduced-motion:reduce){.pf-entry-logo .pf-entry-ring,.pf-logo-build .pf-part{animation:none!important;opacity:1!important;transform:none!important}}
