@@ -1098,3 +1098,42 @@ footer{background:#0c0a0d;color:#e9dfd1;border-top:1px solid rgba(214,180,119,.1
  .product-detail-section .size-preset{min-width:30px!important;width:30px!important;height:29px!important;font-size:10px!important}
  .product-detail-section .size-preset.size-custom{width:auto!important;min-width:46px!important}
 }
+
+
+/* Recommended products: replace white card surfaces with the warm Protoflow palette */
+.product-detail-section #recommendedGrid,
+.product-detail-section .recommended-grid,
+.product-detail-section .product-recommendations{
+  color:#39271b!important;
+}
+.product-detail-section #recommendedGrid .product-card,
+.product-detail-section .recommended-grid .product-card,
+.product-detail-section .product-recommendations .product-card{
+  background:#e9ddca!important;
+  border:1px solid #d0b99a!important;
+  color:#39271b!important;
+}
+.product-detail-section #recommendedGrid .product-image,
+.product-detail-section .recommended-grid .product-image,
+.product-detail-section .product-recommendations .product-image{
+  background:#dfcbb0!important;
+}
+.product-detail-section #recommendedGrid .product-info,
+.product-detail-section #recommendedGrid .product-info h3,
+.product-detail-section #recommendedGrid .product-info p,
+.product-detail-section .recommended-grid .product-info,
+.product-detail-section .recommended-grid .product-info h3,
+.product-detail-section .recommended-grid .product-info p,
+.product-detail-section .product-recommendations .product-info,
+.product-detail-section .product-recommendations .product-info h3,
+.product-detail-section .product-recommendations .product-info p{
+  color:#39271b!important;
+}
+.product-detail-section #recommendedGrid .price,
+.product-detail-section .recommended-grid .price,
+.product-detail-section .product-recommendations .price{
+  color:#795532!important;
+}
+.product-detail-section .recommendation-placeholder .product-image{
+  background:#dfcbb0!important;
+}
