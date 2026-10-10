@@ -1246,3 +1246,75 @@ body[data-page="product"] .recommended-section #recommendedGrid .product-fallbac
 body[data-page="product"] .recommended-section #recommendedGrid .price{
   color:#795532!important;
 }
+
+
+/* Homepage: use the same warm ivory tone as the Recommended Products section
+   wherever the home page uses a pale/white section surface. */
+body[data-page="home"] .trust-strip,
+body[data-page="home"] .collections,
+body[data-page="home"] .featured,
+body[data-page="home"] .shop,
+body[data-page="home"] .process,
+body[data-page="home"] .cat-section,
+body[data-page="home"] .home-category-section,
+body[data-page="home"] .story,
+body[data-page="home"] .newsletter,
+body[data-page="home"] .home-category-section:nth-child(odd),
+body[data-page="home"] .home-category-section:nth-child(even) {
+  background:#f5f1e8!important;
+  color:#35291f!important;
+}
+body[data-page="home"] .trust-item strong,
+body[data-page="home"] .section-head h2,
+body[data-page="home"] .story-copy h2,
+body[data-page="home"] .process-card h3,
+body[data-page="home"] .newsletter h2,
+body[data-page="home"] .product-info h3,
+body[data-page="home"] .product-info .price {
+  color:#35291f!important;
+}
+body[data-page="home"] .trust-item span,
+body[data-page="home"] .section-head p,
+body[data-page="home"] .story-copy>p,
+body[data-page="home"] .process-card p,
+body[data-page="home"] .newsletter p,
+body[data-page="home"] .product-info p {
+  color:#796a59!important;
+}
+body[data-page="home"] .product-image {
+  background:#dfcbb0!important;
+  border-color:#e0d1bb!important;
+}
+body[data-page="home"] .product-card {
+  background:#eae2d4!important;
+  border:1px solid #d0b99a!important;
+  border-radius:8px;
+  padding:10px;
+}
+body[data-page="home"] .product-badge,
+body[data-page="home"] .wishlist-btn {
+  background:#f5f1e8!important;
+  color:#35291f!important;
+}
+body[data-page="home"] .product-actions .add-btn,
+body[data-page="home"] .product-actions .icon-btn {
+  color:#35291f!important;
+  border-color:#c8b59b!important;
+}
+body[data-page="home"] .product-actions .add-btn:hover,
+body[data-page="home"] .product-actions .icon-btn:hover {
+  background:#39271b!important;
+  color:#fffaf3!important;
+  border-color:#39271b!important;
+}
+body[data-page="home"] .story-image {
+  background:#dfcbb0!important;
+}
+body[data-page="home"] .story-point strong {
+  color:#35291f!important;
+}
+body[data-page="home"] .newsletter-form input {
+  background:#fffaf3!important;
+  color:#35291f!important;
+  border-color:#d0b99a!important;
+}
