@@ -49,6 +49,10 @@
         </div>
       </div>
     </header>`);
+  // Safety cleanup: remove any legacy direct Collections nav link, preserving the dropdown.
+  $("#navLinks > a").forEach(link => {
+    if (link.textContent.trim().toLowerCase() === "collections" || link.getAttribute("href") === "collections.html") link.remove();
+  });
 
   document.body.insertAdjacentHTML("beforeend", `
     <footer>
