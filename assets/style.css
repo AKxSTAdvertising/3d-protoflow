@@ -694,3 +694,8 @@ footer{background:#0c0a0d;color:#e9dfd1;border-top:1px solid rgba(214,180,119,.1
 /* Homepage collection tiles: image and placeholder are part of the link target */
 .collection-card-clickable{cursor:pointer}
 .collection-card-clickable:focus-visible{outline:2px solid #9b7449;outline-offset:4px}
+
+/* Collection artwork is decorative; let clicks reach the full collection tile. */
+.collection-card-clickable>.collection-placeholder,.collection-card-clickable>img{pointer-events:none}
+.collection-card-clickable>.collection-info{pointer-events:none}
+.collection-card-clickable .collection-info a{pointer-events:auto}
