@@ -1770,3 +1770,18 @@ body[data-page="collections"] .section.shop {
     padding-top:8px!important;
   }
 }
+
+/* FINAL HEADER NAV — requested order, no arrow, hover dropdown, +5% type */
+.nav-links{gap:35.7px!important}
+.nav-links>a,.nav-dropdown>a{font-size:13.65px!important}
+.nav-dropdown{position:relative;display:flex;align-items:center}
+.nav-dropdown>a{padding:24px 0!important}
+.nav-dropdown-menu{display:none!important;position:absolute!important;top:100%!important;left:-16px!important;min-width:190px;margin:0!important}
+.nav-dropdown:hover .nav-dropdown-menu,.nav-dropdown:focus-within .nav-dropdown-menu{display:grid!important}
+@media(max-width:760px){
+  .nav-links{gap:0!important}
+  .nav-links>a,.nav-dropdown>a{font-size:13.65px!important;padding:13px 0!important}
+  .nav-dropdown{display:block!important;width:100%}
+  .nav-dropdown-menu{position:static!important;min-width:0;width:100%;margin:0 0 8px 10px!important}
+  .nav-dropdown:hover .nav-dropdown-menu,.nav-dropdown:focus-within .nav-dropdown-menu{display:grid!important}
+}
