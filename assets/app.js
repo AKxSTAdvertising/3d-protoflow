@@ -37,11 +37,11 @@
           <div class="nav-dropdown">
             <button class="nav-dropdown-toggle${PAGE === "collections" ? " active" : ""}" id="collectionsToggle" aria-expanded="false" aria-controls="collectionsMenu">Collections</button>
             <div class="nav-dropdown-menu" id="collectionsMenu">
-              <a href="collections.html#cat-divine-creations">Divine Creations</a>
-              <a href="collections.html#cat-decor">Home Decor</a>
-              <a href="collections.html#cat-miniatures">Miniatures &amp; Collectibles</a>
-              <a href="collections.html#cat-functional">Functional &amp; Utility</a>
-              <a href="collections.html#cat-gifts">Gifts &amp; Personalised</a>
+              <a href="divine-creations.html?category=divine-creations">Divine Creations</a>
+              <a href="home-decor.html?category=decor">Home Decor</a>
+              <a href="miniatures.html?category=miniatures">Miniatures &amp; Collectibles</a>
+              <a href="functional-utility.html?category=functional">Functional &amp; Utility</a>
+              <a href="gifts-personalised.html?category=gifts">Gifts &amp; Personalised</a>
             </div>
           </div>
         </nav>
