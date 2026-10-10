@@ -33,11 +33,12 @@
       <div class="container navbar">
         <a class="brand" href="index.html" aria-label="PROTOFLOW 3D home">${logo}</a>
         <nav class="nav-links" id="navLinks" aria-label="Main navigation">
-          ${NAV.filter(([id]) => id !== "collections").map(([id, href, label]) => `<a href="${href}"${id === PAGE ? ' class="active" aria-current="page"' : ""}>${label}</a>`).join("")}
-          <div class="nav-dropdown">
-            <a href="collections.html"${PAGE === "collections" ? ' class="active" aria-current="page"' : ""}>Collections</a>
-            <button class="nav-dropdown-toggle" id="collectionsToggle" aria-label="Open collection categories" aria-expanded="false" aria-controls="collectionsMenu">⌄</button>
-            <div class="nav-dropdown-menu" id="collectionsMenu">
+          ${NAV.map(([id, href, label]) => {
+            if (id === "collections") return `<div class="nav-dropdown"><a href="${href}"${PAGE === id ? ' class="active" aria-current="page"' : ""}>Collection</a><div class="nav-dropdown-menu" id="collectionsMenu"><a href="divine-creations.html">Divine Creations</a><a href="home-decor.html">Home Decor</a><a href="miniatures-collectibles.html">Miniatures &amp; Collectibles</a><a href="functional-utility.html">Functional &amp; Utility</a><a href="gifts-personalised.html">Gifts &amp; Personalised</a></div></div>`;
+            const navLabel = id === "about" ? "About us" : id === "contact" ? "Contact us" : label;
+            return `<a href="${href}"${id === PAGE ? ' class="active" aria-current="page"' : ""}>${navLabel}</a>`;
+          }).join("")}
+
               <a href="divine-creations.html">Divine Creations</a>
               <a href="home-decor.html">Home Decor</a>
               <a href="miniatures-collectibles.html">Miniatures &amp; Collectibles</a>
@@ -99,30 +100,7 @@
     nav.classList.toggle("open");
     $("#menuToggle").setAttribute("aria-expanded", String(nav.classList.contains("open")));
   });
-  const collectionsToggle = $("#collectionsToggle");
-  const collectionsMenu = $("#collectionsMenu");
-  if (collectionsToggle && collectionsMenu) {
-    collectionsToggle.addEventListener("click", e => {
-      e.preventDefault();
-      e.stopPropagation();
-      const open = !collectionsMenu.classList.contains("open");
-      collectionsMenu.classList.toggle("open", open);
-      collectionsToggle.setAttribute("aria-expanded", String(open));
-    });
-    collectionsMenu.addEventListener("click", e => e.stopPropagation());
-    document.addEventListener("click", e => {
-      if (!e.target.closest(".nav-dropdown")) {
-        collectionsMenu.classList.remove("open");
-        collectionsToggle.setAttribute("aria-expanded", "false");
-      }
-    });
-    document.addEventListener("keydown", e => {
-      if (e.key === "Escape") {
-        collectionsMenu.classList.remove("open");
-        collectionsToggle.setAttribute("aria-expanded", "false");
-      }
-    });
-  }
+  // Collections category menu opens on hover/focus; the Collection link itself navigates.
 
   /* ---------- toast + popup ---------- */
   let toastTimer;
