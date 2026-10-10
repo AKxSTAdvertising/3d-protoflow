@@ -389,16 +389,30 @@
     loadCatalog().then(cats => {
       const num = n => String(n).padStart(2, "0");
       $("#collectionGrid").innerHTML = cats.map((cat, i) => `
-        <article class="collection-card">
+        <article class="collection-card collection-card-clickable" role="link" tabindex="0" aria-label="Open ${escapeHTML(cat.title)} collection" data-collection-url="collections.html#cat-${encodeURIComponent(cat.id)}">
           <div class="collection-placeholder"></div>
           ${cat.image ? `<img src="${escapeHTML(imgSrc(cat.image))}" alt="${escapeHTML(cat.title)}" onerror="this.style.display='none'">` : ""}
-          <div class="collection-info"><small>Collection ${num(i + 1)}</small><h3>${escapeHTML(cat.title)}</h3><a href="collections.html#cat-${cat.id}">Explore collection ↗</a></div>
+          <div class="collection-info"><small>Collection ${num(i + 1)}</small><h3>${escapeHTML(cat.title)}</h3><a href="collections.html#cat-${encodeURIComponent(cat.id)}">Explore collection ↗</a></div>
         </article>`).join("") + `
-        <article class="collection-card">
+        <article class="collection-card collection-card-clickable" role="link" tabindex="0" aria-label="Open custom creations contact page" data-collection-url="contact.html">
           <div class="collection-placeholder"></div>
           <img src="images/category-custom.jpg" alt="Custom creations" onerror="this.style.display='none'">
           <div class="collection-info"><small>Collection ${num(cats.length + 1)}</small><h3>Custom Creations</h3><a href="contact.html">Make it yours ↗</a></div>
         </article>`;
+
+      // Make the entire collection tile (including its image/placeholder) open the collection.
+      const collectionGrid = $("#collectionGrid");
+      collectionGrid.addEventListener("click", e => {
+        if (e.target.closest("a")) return;
+        const card = e.target.closest("[data-collection-url]");
+        if (card) location.href = card.dataset.collectionUrl;
+      });
+      collectionGrid.addEventListener("keydown", e => {
+        if ((e.key === "Enter" || e.key === " ") && e.target.matches("[data-collection-url]")) {
+          e.preventDefault();
+          location.href = e.target.dataset.collectionUrl;
+        }
+      });
 
       // Keep the homepage concise: show only four products per collection.
       // The collection page remains the destination for the complete product list.
