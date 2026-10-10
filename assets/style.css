@@ -678,3 +678,15 @@ footer{background:#0c0a0d;color:#e9dfd1;border-top:1px solid rgba(214,180,119,.1
 @keyframes pf-base-in{0%{opacity:0;transform:translate(0,90px) rotate(8deg) scaleX(.35)}75%{opacity:1;transform:translate(0,-3px) rotate(-2deg) scaleX(1.02)}100%{opacity:1;transform:translate(0) rotate(0) scaleX(1)}}
 @keyframes pf-word-in{0%{opacity:0;transform:translateY(20px);letter-spacing:8px}100%{opacity:1;transform:translateY(0);letter-spacing:1.2px}}
 @media(prefers-reduced-motion:reduce){.pf-entry-logo .pf-entry-ring,.pf-logo-build .pf-part{animation:none!important;opacity:1!important;transform:none!important}}
+
+
+/* Final intro refinements: keep the actual mark inside the ring, remove duplicate wordmark */
+.pf-entry-logo .pf-entry-stage{width:min(92vw,540px);gap:0}
+.pf-entry-logo .pf-entry-ring{width:min(90vw,500px);max-width:calc(100vw - 34px);aspect-ratio:1}
+.pf-logo-build{width:min(76vw,390px);max-height:57vh;overflow:visible}
+.pf-logo-build .pf-wordmark{display:none!important}
+.pf-entry-logo .pf-entry-brand{margin-top:4px;letter-spacing:.16em}
+.pf-entry-logo .pf-entry-caption{margin-top:10px}
+.pf-entry-logo .pf-entry-line{margin-top:22px}
+.pf-entry.is-leaving{opacity:0;visibility:hidden;pointer-events:none;transition:opacity .9s ease,visibility .9s ease}
+@media(max-height:700px){.pf-logo-build{width:min(68vw,320px);max-height:49vh}.pf-entry-logo .pf-entry-ring{width:min(78vh,400px)}.pf-entry-logo .pf-entry-caption{margin-top:6px}.pf-entry-logo .pf-entry-line{margin-top:12px}}
