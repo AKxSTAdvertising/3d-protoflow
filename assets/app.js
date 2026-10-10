@@ -100,16 +100,28 @@
   });
   const collectionsToggle = $("#collectionsToggle");
   const collectionsMenu = $("#collectionsMenu");
-  collectionsToggle.addEventListener("click", () => {
-    const open = collectionsMenu.classList.toggle("open");
-    collectionsToggle.setAttribute("aria-expanded", String(open));
-  });
-  document.addEventListener("click", e => {
-    if (!e.target.closest(".nav-dropdown")) {
-      collectionsMenu.classList.remove("open");
-      collectionsToggle.setAttribute("aria-expanded", "false");
-    }
-  });
+  if (collectionsToggle && collectionsMenu) {
+    collectionsToggle.addEventListener("click", e => {
+      e.preventDefault();
+      e.stopPropagation();
+      const open = !collectionsMenu.classList.contains("open");
+      collectionsMenu.classList.toggle("open", open);
+      collectionsToggle.setAttribute("aria-expanded", String(open));
+    });
+    collectionsMenu.addEventListener("click", e => e.stopPropagation());
+    document.addEventListener("click", e => {
+      if (!e.target.closest(".nav-dropdown")) {
+        collectionsMenu.classList.remove("open");
+        collectionsToggle.setAttribute("aria-expanded", "false");
+      }
+    });
+    document.addEventListener("keydown", e => {
+      if (e.key === "Escape") {
+        collectionsMenu.classList.remove("open");
+        collectionsToggle.setAttribute("aria-expanded", "false");
+      }
+    });
+  }
 
   /* ---------- toast + popup ---------- */
   let toastTimer;
