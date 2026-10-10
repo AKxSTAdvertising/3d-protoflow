@@ -699,3 +699,14 @@ footer{background:#0c0a0d;color:#e9dfd1;border-top:1px solid rgba(214,180,119,.1
 .collection-card-clickable>.collection-placeholder,.collection-card-clickable>img{pointer-events:none}
 .collection-card-clickable>.collection-info{pointer-events:none}
 .collection-card-clickable .collection-info a{pointer-events:auto}
+
+/* Product images: consistent automatic fitting and clickable card repair */
+.product-image{display:block;position:relative;aspect-ratio:4/4.5;overflow:hidden;background:#f0e8dc;}
+.product-image img{display:block;width:100%;height:100%;object-fit:contain;object-position:center;padding:clamp(8px,2vw,16px);}
+.product-card-main{display:block;position:relative;color:inherit;cursor:pointer;}
+.product-card-main .product-image,.product-card-main .product-info{pointer-events:none;}
+.product-card-main .product-image img{pointer-events:none;}
+.pf-entry-logo .pf-entry-brand{display:block;position:relative;z-index:3;margin-top:-2px;font-family:"DM Sans",sans-serif;font-weight:800;font-size:clamp(17px,3.3vw,25px);letter-spacing:.08em;text-align:center;color:#f8f2e9;opacity:0;animation:pf-entry-text .7s 1.6s ease forwards;}
+.pf-entry-logo .pf-entry-caption{margin-top:clamp(6px,1.4vh,12px);max-width:78%;text-align:center;font-size:clamp(7px,1.5vw,9px);letter-spacing:.15em;}
+.pf-entry-logo .pf-entry-line{margin-top:clamp(8px,1.8vh,16px);width:min(210px,48vw);}
+@media(max-width:600px){.product-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 12px}.product-image img{padding:8px}.product-info{gap:6px}.product-info h3{font-size:12px}.price{font-size:12px}}
