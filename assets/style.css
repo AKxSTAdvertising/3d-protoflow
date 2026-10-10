@@ -1586,3 +1586,124 @@ body[data-page="collections"] #categorySections .cat-section .product-actions .i
   color:#171513!important;
   border-color:#e7c58f!important;
 }
+
+
+/* PROTOFLOW DARK COLLECTION SYSTEM — category, collection and product pages */
+body[data-page="collections"],
+body[data-page="category"],
+body[data-page="product"]{
+  background:#171513!important;
+  color:#fff!important;
+}
+body[data-page="collections"] .section.shop,
+body[data-page="collections"] #categorySections,
+body[data-page="collections"] #categorySections .cat-section,
+body[data-page="category"] .category-products-section,
+body[data-page="product"] .product-detail-section,
+body[data-page="product"] .recommended-section{
+  background:#171513!important;
+  color:#fff!important;
+}
+body[data-page="collections"] .page-banner,
+body[data-page="category"] .page-banner,
+body[data-page="product"] .page-banner,
+body[data-page="category"] .category-page-banner{
+  background:#171513!important;
+  color:#fff!important;
+  padding-top:96px!important;
+  padding-bottom:30px!important;
+}
+body[data-page="collections"] .shop,
+body[data-page="product"] .product-detail-section,
+body[data-page="product"] .recommended-section,
+body[data-page="category"] .category-products-section{
+  padding-top:28px!important;
+  padding-bottom:42px!important;
+}
+body[data-page="collections"] .section-head h1,
+body[data-page="collections"] .section-head h2,
+body[data-page="collections"] .section-head p,
+body[data-page="category"] .page-banner h1,
+body[data-page="category"] .page-banner p,
+body[data-page="product"] .page-banner h1,
+body[data-page="product"] .page-banner p,
+body[data-page="product"] .detail-copy,
+body[data-page="product"] .detail-copy h1,
+body[data-page="product"] .detail-copy h2,
+body[data-page="product"] .detail-copy h3,
+body[data-page="product"] .detail-copy p,
+body[data-page="product"] .detail-copy label,
+body[data-page="product"] .product-extra-details,
+body[data-page="product"] .product-extra-details h3,
+body[data-page="product"] .product-extra-details p{
+  color:#fff!important;
+}
+body[data-page="collections"] .page-banner .eyebrow,
+body[data-page="category"] .page-banner .eyebrow,
+body[data-page="product"] .page-banner .eyebrow,
+body[data-page="category"] .category-back-link{
+  color:#e7c58f!important;
+}
+body[data-page="category"] .category-products-section .product-card,
+body[data-page="product"] .recommended-section .product-card,
+body[data-page="collections"] #categorySections .product-card{
+  background:#211e1b!important;
+  color:#fff!important;
+  border:1px solid #494039!important;
+}
+body[data-page="category"] .category-products-section .product-info h3,
+body[data-page="category"] .category-products-section .product-info .price,
+body[data-page="product"] .recommended-section .product-info h3,
+body[data-page="product"] .recommended-section .product-info .price,
+body[data-page="collections"] #categorySections .product-info h3,
+body[data-page="collections"] #categorySections .product-info .price{
+  color:#fff!important;
+}
+body[data-page="category"] .category-products-section .product-info p,
+body[data-page="product"] .recommended-section .product-info p,
+body[data-page="collections"] #categorySections .product-info p{
+  color:#d6cec5!important;
+}
+body[data-page="category"] .category-products-section .product-image,
+body[data-page="product"] .recommended-section .product-image,
+body[data-page="collections"] #categorySections .product-image{
+  background:#2c2824!important;
+}
+body[data-page="collections"] .section.shop .section-head h1,
+body[data-page="collections"] .section.shop .section-head h2,
+body[data-page="collections"] .section.shop .section-head p,
+body[data-page="collections"] .section.shop label{
+  color:#fff!important;
+}
+body[data-page="collections"] .section.shop .chip{
+  background:#211e1b!important;color:#fff!important;border-color:#494039!important;
+}
+body[data-page="collections"] .section.shop .chip.active{
+  background:#e7c58f!important;color:#171513!important;border-color:#e7c58f!important;
+}
+body[data-page="collections"] .section.shop .search-box input,
+body[data-page="collections"] .section.shop .shop-toolbar select,
+body[data-page="category"] .shop-toolbar input,
+body[data-page="category"] .shop-toolbar select{
+  background:#211e1b!important;color:#fff!important;border-color:#494039!important;
+}
+body[data-page="collections"] .section.shop .search-box input::placeholder,
+body[data-page="category"] .shop-toolbar input::placeholder{color:#bcb2a8!important}
+body[data-page="collections"] .section.shop .product-card,
+body[data-page="category"] .category-products-section .product-card{
+  border-radius:8px!important;
+}
+@media(max-width:700px){
+  body[data-page="collections"] .page-banner,
+  body[data-page="category"] .page-banner,
+  body[data-page="product"] .page-banner,
+  body[data-page="category"] .category-page-banner{
+    padding-top:82px!important;padding-bottom:22px!important;
+  }
+  body[data-page="collections"] .shop,
+  body[data-page="category"] .category-products-section,
+  body[data-page="product"] .product-detail-section,
+  body[data-page="product"] .recommended-section{
+    padding-top:22px!important;padding-bottom:32px!important;
+  }
+}
