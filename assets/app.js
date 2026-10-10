@@ -37,8 +37,11 @@
           <div class="nav-dropdown">
             <button class="nav-dropdown-toggle${PAGE === "collections" ? " active" : ""}" id="collectionsToggle" aria-expanded="false" aria-controls="collectionsMenu">Collections</button>
             <div class="nav-dropdown-menu" id="collectionsMenu">
-              <a href="collections.html">All Collections</a>
-              <a href="collections.html#shop">Shop Products</a>
+              <a href="collections.html#cat-divine-creations">Divine Creations</a>
+              <a href="collections.html#cat-decor">Home Decor</a>
+              <a href="collections.html#cat-miniatures">Miniatures &amp; Collectibles</a>
+              <a href="collections.html#cat-functional">Functional &amp; Utility</a>
+              <a href="collections.html#cat-gifts">Gifts &amp; Personalised</a>
             </div>
           </div>
         </nav>
