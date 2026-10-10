@@ -781,3 +781,38 @@ footer{background:#0c0a0d;color:#e9dfd1;border-top:1px solid rgba(214,180,119,.1
  .detail-thumb{width:64px;height:72px;aspect-ratio:auto;flex:0 0 64px}
  .detail-thumb img{object-fit:contain}
 }
+
+
+/* Desktop product detail layout tuned to the supplied reference screenshot */
+@media(min-width:761px){
+ .product-page-banner{display:none!important}
+ .product-detail-section{padding-top:34px!important;padding-bottom:56px!important}
+ .product-detail-section .container{max-width:790px!important}
+ .product-detail-layout{display:grid!important;grid-template-columns:minmax(0,1.08fr) minmax(0,1fr)!important;gap:19px!important;align-items:start!important}
+ .detail-gallery{display:grid!important;grid-template-columns:24px minmax(0,1fr)!important;gap:6px!important;align-items:start!important}
+ .detail-main-image{grid-column:2!important;grid-row:1!important;aspect-ratio:4/5!important;max-height:495px!important;background:#f5f0e9!important}
+ .detail-main-image img{width:100%!important;height:100%!important;object-fit:contain!important;padding:0!important}
+ .detail-thumbnails{grid-column:1!important;grid-row:1!important;display:flex!important;flex-direction:column!important;gap:6px!important;max-height:495px!important;overflow-y:auto!important;overflow-x:hidden!important}
+ .detail-thumb{width:24px!important;height:42px!important;aspect-ratio:auto!important;padding:1px!important;flex:0 0 auto!important}
+ .detail-thumb img{width:100%!important;height:100%!important;object-fit:cover!important}
+ .detail-copy{max-width:none!important;padding-top:12px!important}
+ .detail-copy .eyebrow{font-size:8px!important;letter-spacing:.09em!important;margin-bottom:8px!important}
+ .detail-copy h1{font:600 11px/1.45 "DM Sans",sans-serif!important;letter-spacing:0!important;margin:0 0 10px!important;text-transform:uppercase!important}
+ .detail-price{font-size:9px!important;line-height:1.5!important;margin:8px 0 18px!important}
+ .detail-copy .size-choice{margin:0 0 14px!important;padding:0!important}
+ .detail-copy .size-choice h3,.detail-copy .detail-meta strong{font-size:8px!important}
+ .detail-copy .detail-description{font-size:9px!important;line-height:1.55!important;margin:12px 0 18px!important}
+ .detail-copy .detail-meta{font-size:8px!important;line-height:1.5!important;gap:7px!important}
+ .detail-copy .detail-note{font-size:8px!important;line-height:1.5!important}
+ .detail-copy .detail-actions{display:grid!important;grid-template-columns:1fr 1fr!important;gap:6px!important;margin:16px 0 10px!important}
+ .detail-copy .detail-actions .btn{min-height:30px!important;padding:8px 10px!important;font-size:8px!important;letter-spacing:.04em!important}
+ .product-extra-details{margin-top:18px!important}
+ .product-extra-block{padding:10px 0!important}
+ .product-extra-block h3{font-size:9px!important}
+ .product-extra-block p{font-size:9px!important;line-height:1.5!important}
+}
+@media(max-width:760px){
+ .product-page-banner{display:none!important}
+ .product-detail-section{padding-top:22px!important}
+ .detail-main-image img{object-fit:contain!important}
+}
