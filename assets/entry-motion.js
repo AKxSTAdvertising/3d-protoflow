@@ -1,6 +1,12 @@
 (() => {
   "use strict";
   if (document.getElementById("pf-entry-intro")) return;
+  try {
+    if (sessionStorage.getItem("pfSkipIntroOnce") === "1") {
+      sessionStorage.removeItem("pfSkipIntroOnce");
+      return;
+    }
+  } catch (e) {}
   const intro = document.createElement("div");
   intro.id = "pf-entry-intro";
   intro.className = "pf-entry pf-entry-logo";
