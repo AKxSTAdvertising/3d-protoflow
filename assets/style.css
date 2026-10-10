@@ -1464,3 +1464,75 @@ body[data-page="category"] .product-actions .icon-btn,body[data-page="category"]
 @media(max-width:760px){
   .nav-dropdown-menu.open{display:grid!important;position:static!important}
 }
+
+
+/* SITE-WIDE REFINEMENT — tighter page starts and more readable typography */
+.section{padding-top:70px;padding-bottom:70px}
+.shop{padding-top:55px}
+.cat-section{padding-top:48px;padding-bottom:48px}
+.page-banner{padding-top:112px;padding-bottom:50px}
+.category-page-banner{padding-top:112px;padding-bottom:50px}
+.hero{height:min(78vh,650px);min-height:500px}
+
+/* Increase text sizes by approximately 20% without scaling images or layout */
+.eyebrow{font-size:12px}
+.nav-links a{font-size:13px}
+.brand{font-size:14px}
+.btn{font-size:14px}
+.hero-copy>p{font-size:14.5px}
+.benefit{font-size:12px}
+.benefit span span{font-size:11px}
+.section-head p{font-size:16.8px}
+.chip{font-size:13px}
+.trust-item strong{font-size:14.5px}
+.trust-item span{font-size:13px}
+.collection-info small{font-size:11px}
+.collection-info h3{font-size:30px}
+.collection-info a{font-size:13px}
+.search-box input,.shop-toolbar select{font-size:14.5px}
+.product-info h3{font-size:15.6px}
+.product-info p{font-size:13.2px}
+.price{font-size:15.6px}
+.add-btn{font-size:12px}
+.story-copy>p{font-size:15.6px}
+.story-point strong{font-size:14.5px}
+.story-point span{font-size:13.2px}
+.process-card h3{font-size:27.6px}
+.process-card p{font-size:14.4px}
+.custom-inner p{font-size:14.4px}
+.newsletter p{font-size:14.4px}
+.newsletter-form input{font-size:14.4px}
+.newsletter-form button{font-size:13.2px}
+.footer-about p{font-size:14.4px}
+.footer-col h4{font-size:13.2px}
+.footer-col a{font-size:13.2px}
+.footer-bottom{font-size:12px}
+.page-banner p,.category-page-banner p{font-size:16.8px}
+.text-link,.category-back-link{font-size:14.4px}
+.info-card h3{font-size:15.6px}
+.info-card p,.info-card a.inline{font-size:14.4px}
+.form-card h2{font-size:36px}
+.form-card>p{font-size:14.4px}
+.field label{font-size:13.2px}
+.field input,.field select,.field textarea{font-size:15.6px}
+.form-note{font-size:12px}
+.category-directory-copy strong{font-size:22.8px}
+.category-directory-copy small{font-size:12px}
+.category-directory-number{font-size:13.2px}
+.category-directory-arrow{font-size:24px}
+body[data-page="product"] .product-detail-section .detail-copy,
+body[data-page="product"] .product-detail-section .detail-copy p,
+body[data-page="product"] .product-detail-section .detail-copy label,
+body[data-page="product"] .product-detail-section .detail-copy button,
+body[data-page="product"] .product-detail-section .detail-copy a{font-size:1.2em}
+
+/* Reduce oversized blank space at the top of inner pages, especially on phones */
+@media(max-width:700px){
+  .section{padding-top:52px;padding-bottom:52px}
+  .cat-section{padding-top:38px;padding-bottom:38px}
+  .hero{height:660px;min-height:620px}
+  .hero-copy{padding-top:105px}
+  .page-banner{padding-top:88px;padding-bottom:38px}
+  .category-page-banner{padding-top:88px;padding-bottom:38px}
+  .section-head{margin-bottom:26px}
+}
