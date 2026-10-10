@@ -1,8 +1,8 @@
 (() => {
   "use strict";
-  if (document.body.dataset.page !== "home" || sessionStorage.getItem("pf-entry-seen")) return;
-  sessionStorage.setItem("pf-entry-seen", "1");
+  if (document.getElementById("pf-entry-intro")) return;
   const intro = document.createElement("div");
+  intro.id = "pf-entry-intro";
   intro.className = "pf-entry pf-entry-logo";
   intro.setAttribute("role", "status");
   intro.setAttribute("aria-label", "PROTOFLOW 3D logo assembling");
@@ -19,7 +19,6 @@
         <g class="pf-part pf-letter-three"><path d="M112 191C119 165 148 158 169 170C190 182 189 207 168 219C194 229 197 260 177 278C155 298 117 285 110 260C105 243 119 231 132 238C140 243 138 256 148 259C162 264 173 249 165 239C158 230 144 236 139 226C132 212 148 204 160 205C173 206 179 193 166 188C155 183 145 190 140 201C133 216 106 211 112 191Z" fill="url(#pfGold)" stroke="#101114" stroke-width="8" stroke-linejoin="round"/></g>
         <g class="pf-part pf-letter-d"><path d="M224 170H266C302 170 322 194 322 230C322 267 300 288 266 288H224Z" fill="url(#pfGold)" stroke="#101114" stroke-width="8" stroke-linejoin="round"/><path d="M246 193V266H264C286 266 299 252 299 230C299 208 286 193 264 193Z" fill="#f8f7f4" stroke="#101114" stroke-width="7" stroke-linejoin="round"/></g>
         <g class="pf-part pf-rail-base"><path d="M55 293H365Q382 293 382 310Q382 327 365 327H55Q37 327 37 310Q37 293 55 293Z" fill="url(#pfSteel)" stroke="#101114" stroke-width="8" stroke-linejoin="round"/></g>
-        <g class="pf-part pf-wordmark"><text x="210" y="365" text-anchor="middle" font-family="Arial, sans-serif" font-size="25" font-weight="800" letter-spacing="1.2" fill="#f5f0e7">PROTO_FLOW_3D</text></g>
       </svg>
       <div class="pf-entry-brand">PROTOFLOW <b>3D</b></div>
       <div class="pf-entry-caption">ART, SHAPED IN ANOTHER DIMENSION</div>
@@ -32,6 +31,6 @@
     document.body.classList.remove("pf-entering");
     window.setTimeout(() => intro.remove(), 950);
   };
-  window.setTimeout(leave, 3900);
+  window.setTimeout(leave, 5600);
   intro.addEventListener("click", leave, { once: true });
 })();
