@@ -33,11 +33,18 @@
       <div class="container navbar">
         <a class="brand" href="index.html" aria-label="PROTOFLOW 3D home">${logo}</a>
         <nav class="nav-links" id="navLinks" aria-label="Main navigation">
-          ${NAV.map(([id, href, label]) => {
-            if (id === "collections") return `<div class="nav-dropdown"><a href="${href}"${PAGE === id ? ' class="active" aria-current="page"' : ""}>Collection</a><div class="nav-dropdown-menu" id="collectionsMenu"><a href="divine-creations.html">Divine Creations</a><a href="home-decor.html">Home Decor</a><a href="miniatures-collectibles.html">Miniatures &amp; Collectibles</a><a href="functional-utility.html">Functional &amp; Utility</a><a href="gifts-personalised.html">Gifts &amp; Personalised</a></div></div>`;
-            const navLabel = id === "about" ? "About us" : id === "contact" ? "Contact us" : label;
-            return `<a href="${href}"${id === PAGE ? ' class="active" aria-current="page"' : ""}>${navLabel}</a>`;
-          }).join("")}
+          ${NAV.filter(([id]) => id !== "collections").map(([id, href, label]) => `<a href="${href}"${id === PAGE ? ' class="active" aria-current="page"' : ""}>${label}</a>`).join("")}
+          <div class="nav-dropdown">
+            <a href="collections.html"${PAGE === "collections" ? ' class="active" aria-current="page"' : ""}>Collections</a>
+            <button class="nav-dropdown-toggle" id="collectionsToggle" aria-label="Open collection categories" aria-expanded="false" aria-controls="collectionsMenu">⌄</button>
+            <div class="nav-dropdown-menu" id="collectionsMenu">
+              <a href="divine-creations.html">Divine Creations</a>
+              <a href="home-decor.html">Home Decor</a>
+              <a href="miniatures-collectibles.html">Miniatures &amp; Collectibles</a>
+              <a href="functional-utility.html">Functional &amp; Utility</a>
+              <a href="gifts-personalised.html">Gifts &amp; Personalised</a>
+            </div>
+          </div>
         </nav>
         <div class="nav-actions">
           <a class="icon-btn" id="searchLink" href="collections.html?search=1" aria-label="Search products"><svg viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.5"/><path d="m16 16 4 4"/></svg></a>
@@ -92,17 +99,30 @@
     nav.classList.toggle("open");
     $("#menuToggle").setAttribute("aria-expanded", String(nav.classList.contains("open")));
   });
-  // Collections category menu opens on hover/focus; the Collection link itself navigates.
-
-  // The Home menu is a normal navigation shortcut: skip the cinematic intro once.
-  // A logo click intentionally returns to the full intro; ordinary page refreshes also play it.
-  const homeNavLink = $("#navLinks > a[href='index.html']");
-  if (homeNavLink) homeNavLink.addEventListener("click", () => {
-    try { sessionStorage.setItem("pfSkipIntroOnce", "1"); } catch (e) {}
-  });
-  $(".brand").forEach(link => link.addEventListener("click", () => {
-    try { sessionStorage.removeItem("pfSkipIntroOnce"); } catch (e) {}
-  }));
+  const collectionsToggle = $("#collectionsToggle");
+  const collectionsMenu = $("#collectionsMenu");
+  if (collectionsToggle && collectionsMenu) {
+    collectionsToggle.addEventListener("click", e => {
+      e.preventDefault();
+      e.stopPropagation();
+      const open = !collectionsMenu.classList.contains("open");
+      collectionsMenu.classList.toggle("open", open);
+      collectionsToggle.setAttribute("aria-expanded", String(open));
+    });
+    collectionsMenu.addEventListener("click", e => e.stopPropagation());
+    document.addEventListener("click", e => {
+      if (!e.target.closest(".nav-dropdown")) {
+        collectionsMenu.classList.remove("open");
+        collectionsToggle.setAttribute("aria-expanded", "false");
+      }
+    });
+    document.addEventListener("keydown", e => {
+      if (e.key === "Escape") {
+        collectionsMenu.classList.remove("open");
+        collectionsToggle.setAttribute("aria-expanded", "false");
+      }
+    });
+  }
 
   /* ---------- toast + popup ---------- */
   let toastTimer;
