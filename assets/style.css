@@ -1536,3 +1536,53 @@ body[data-page="product"] .product-detail-section .detail-copy a{font-size:1.2em
   .category-page-banner{padding-top:88px;padding-bottom:38px}
   .section-head{margin-bottom:26px}
 }
+
+
+/* Collections page: consistent dark showroom theme across every category */
+body[data-page="collections"] #categorySections .cat-section,
+body[data-page="collections"] #categorySections .cat-section:nth-child(odd),
+body[data-page="collections"] #categorySections .cat-section:nth-child(even) {
+  background:#171513!important;
+  color:#fff!important;
+  border-top:1px solid rgba(255,255,255,.08);
+}
+body[data-page="collections"] #categorySections .cat-section .section-head h2,
+body[data-page="collections"] #categorySections .cat-section .section-head p,
+body[data-page="collections"] #categorySections .cat-section .product-info,
+body[data-page="collections"] #categorySections .cat-section .product-info h3,
+body[data-page="collections"] #categorySections .cat-section .product-info p,
+body[data-page="collections"] #categorySections .cat-section .product-info .price {
+  color:#fff!important;
+}
+body[data-page="collections"] #categorySections .cat-section .section-head .eyebrow {
+  color:#e7c58f!important;
+}
+body[data-page="collections"] #categorySections .cat-section .product-card {
+  background:#211e1b!important;
+  border:1px solid #494039!important;
+  border-radius:8px;
+  padding:10px;
+}
+body[data-page="collections"] #categorySections .cat-section .product-image {
+  background:#2c2824!important;
+  border:1px solid #403830!important;
+}
+body[data-page="collections"] #categorySections .cat-section .product-info p {
+  color:#d6cec5!important;
+}
+body[data-page="collections"] #categorySections .cat-section .product-badge,
+body[data-page="collections"] #categorySections .cat-section .wishlist-btn {
+  background:#f7f2eb!important;
+  color:#211e1b!important;
+}
+body[data-page="collections"] #categorySections .cat-section .product-actions .add-btn,
+body[data-page="collections"] #categorySections .cat-section .product-actions .icon-btn {
+  color:#fff!important;
+  border-color:#746455!important;
+}
+body[data-page="collections"] #categorySections .cat-section .product-actions .add-btn:hover,
+body[data-page="collections"] #categorySections .cat-section .product-actions .icon-btn:hover {
+  background:#e7c58f!important;
+  color:#171513!important;
+  border-color:#e7c58f!important;
+}
