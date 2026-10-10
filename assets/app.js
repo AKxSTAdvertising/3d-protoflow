@@ -37,8 +37,11 @@
           <div class="nav-dropdown">
             <button class="nav-dropdown-toggle${PAGE === "collections" ? " active" : ""}" id="collectionsToggle" aria-expanded="false" aria-controls="collectionsMenu">Collections</button>
             <div class="nav-dropdown-menu" id="collectionsMenu">
-              <a href="collections.html">All Collections</a>
-              <a href="collections.html#shop">Shop Products</a>
+              <a href="divine-creations.html">Divine Creations</a>
+              <a href="home-decor.html">Home Decor</a>
+              <a href="miniatures-collectibles.html">Miniatures &amp; Collectibles</a>
+              <a href="functional-utility.html">Functional &amp; Utility</a>
+              <a href="gifts-personalised.html">Gifts &amp; Personalised</a>
             </div>
           </div>
         </nav>
@@ -318,6 +321,11 @@
     return Array.isArray(cached) && cached.length ? cached : DEFAULT_CATEGORIES;
   }
 
+  function categoryPageUrl(id){
+    const pages = {"divine-creations":"divine-creations.html","home-decor":"home-decor.html","miniatures-collectibles":"miniatures-collectibles.html","functional-utility":"functional-utility.html","gifts-personalised":"gifts-personalised.html"};
+    return pages[id] || ("collections.html#cat-" + encodeURIComponent(id));
+  }
+
   function productCard(p, index){
     const n = escapeHTML(p.name);
     const href = "product.html?id=" + encodeURIComponent(String(p.name || "").toLowerCase().normalize("NFD").replace(/[\\u0300-\\u036f]/g,"").replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,""));
@@ -408,10 +416,10 @@
     loadCatalog().then(cats => {
       const num = n => String(n).padStart(2, "0");
       $("#collectionGrid").innerHTML = cats.map((cat, i) => `
-        <article class="collection-card collection-card-clickable" role="link" tabindex="0" aria-label="Open ${escapeHTML(cat.title)} collection" data-collection-url="collections.html#cat-${encodeURIComponent(cat.id)}">
+        <article class="collection-card collection-card-clickable" role="link" tabindex="0" aria-label="Open ${escapeHTML(cat.title)} collection" data-collection-url="${categoryPageUrl(cat.id)}">
           <div class="collection-placeholder"></div>
           ${cat.image ? `<img src="${escapeHTML(imgSrc(cat.image))}" alt="${escapeHTML(cat.title)}" onerror="this.style.display='none'">` : ""}
-          <div class="collection-info"><small>Collection ${num(i + 1)}</small><h3>${escapeHTML(cat.title)}</h3><a href="collections.html#cat-${encodeURIComponent(cat.id)}">Explore collection ↗</a></div>
+          <div class="collection-info"><small>Collection ${num(i + 1)}</small><h3>${escapeHTML(cat.title)}</h3><a href="${categoryPageUrl(cat.id)}">Explore collection ↗</a></div>
         </article>`).join("") + `
         <article class="collection-card collection-card-clickable" role="link" tabindex="0" aria-label="Open custom creations contact page" data-collection-url="contact.html">
           <div class="collection-placeholder"></div>
@@ -438,7 +446,7 @@
       const categorySections = cats.map((cat, i) => {
         const preview = cat.products.slice(0, 4);
         const moreLink = cat.products.length > 4
-          ? `<div class="section-link category-view-all"><a class="text-link" href="collections.html#cat-${encodeURIComponent(cat.id)}">View all ${escapeHTML(cat.title)} (${cat.products.length}) →</a></div>`
+          ? `<div class="section-link category-view-all"><a class="text-link" href="${categoryPageUrl(cat.id)}">View all ${escapeHTML(cat.title)} (${cat.products.length}) →</a></div>`
           : "";
         return `<section class="section home-category-section">
           <div class="container">
@@ -490,7 +498,15 @@
     }
 
     function render(){
-      $("#categorySections").innerHTML = CATS.map((cat, i) => `
+      const directory = $("#collectionDirectory");
+    if (directory) directory.innerHTML = CATS.map((cat, i) => `
+      <a class="category-directory-card" href="${categoryPageUrl(cat.id)}">
+        <span class="category-directory-number">${String(i + 1).padStart(2, "0")}</span>
+        <span class="category-directory-copy"><strong>${escapeHTML(cat.title)}</strong><small>${cat.products.length} products</small></span>
+        <span class="category-directory-arrow" aria-hidden="true">↗</span>
+      </a>`).join("");
+
+    $("#categorySections").innerHTML = CATS.map((cat, i) => `
         <section class="section cat-section" id="cat-${cat.id}" data-cat="${cat.id}">
           <div class="container">
             <div class="section-head">
@@ -538,6 +554,47 @@
   }
 
   /* =====================================================================
+     PAGE: CATEGORY — one dedicated page per product category
+     ===================================================================== */
+  function initCategory(){
+    const slug = document.body.dataset.category || "";
+    const title = $("#categoryTitle"), description = $("#categoryDescription");
+    const grid = $("#categoryProductGrid"), loading = $("#categoryLoading");
+    const empty = $("#categoryEmpty"), search = $("#categorySearch"), sort = $("#categorySort");
+    loadCatalog().then(cats => {
+      const cat = cats.find(c => c.id === slug);
+      if (!cat) {
+        if (title) title.textContent = "Collection not found";
+        if (description) description.textContent = "Please browse all collections to find the category you need.";
+        if (loading) loading.style.display = "none";
+        if (empty) { empty.textContent = "This category is not available yet."; empty.style.display = "block"; }
+        return;
+      }
+      document.title = cat.title + " — PROTOFLOW 3D";
+      if (title) title.textContent = cat.title;
+      if (description) description.textContent = cat.blurb || "Explore thoughtfully designed pieces from this collection.";
+      if (loading) loading.style.display = "none";
+      grid.innerHTML = cat.products.map(productCard).join("");
+      const apply = () => {
+        const term = search.value.trim().toLowerCase();
+        const cards = $(".product-card", grid);
+        cards.forEach(card => { card.style.display = card.dataset.name.toLowerCase().includes(term) ? "" : "none"; });
+        const visible = cards.filter(card => card.style.display !== "none");
+        visible.sort((a,b) => {
+          if (sort.value === "low") return Number(a.dataset.price) - Number(b.dataset.price);
+          if (sort.value === "high") return Number(b.dataset.price) - Number(a.dataset.price);
+          if (sort.value === "name") return a.dataset.name.localeCompare(b.dataset.name);
+          return Number(a.dataset.index) - Number(b.dataset.index);
+        }).forEach(card => grid.append(card));
+        if (empty) empty.style.display = visible.length ? "none" : "block";
+      };
+      search.addEventListener("input", apply);
+      sort.addEventListener("change", apply);
+      apply();
+    });
+  }
+
+  /* =====================================================================
      PAGE: CONTACT  (form opens WhatsApp with the message filled in)
      ===================================================================== */
   function initContact(){
@@ -566,6 +623,7 @@
      ===================================================================== */
   if (PAGE === "home") initHome();
   if (PAGE === "collections") initCollections();
+  if (PAGE === "category") initCategory();
   if (PAGE === "contact") initContact();
 
   // fade-in on scroll
