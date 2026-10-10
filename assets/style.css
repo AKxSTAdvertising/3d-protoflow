@@ -690,3 +690,7 @@ footer{background:#0c0a0d;color:#e9dfd1;border-top:1px solid rgba(214,180,119,.1
 .pf-entry-logo .pf-entry-line{margin-top:22px}
 .pf-entry.is-leaving{opacity:0;visibility:hidden;pointer-events:none;transition:opacity .9s ease,visibility .9s ease}
 @media(max-height:700px){.pf-logo-build{width:min(68vw,320px);max-height:49vh}.pf-entry-logo .pf-entry-ring{width:min(78vh,400px)}.pf-entry-logo .pf-entry-caption{margin-top:6px}.pf-entry-logo .pf-entry-line{margin-top:12px}}
+
+/* Homepage collection tiles: image and placeholder are part of the link target */
+.collection-card-clickable{cursor:pointer}
+.collection-card-clickable:focus-visible{outline:2px solid #9b7449;outline-offset:4px}
