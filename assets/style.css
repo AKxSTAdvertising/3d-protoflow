@@ -816,3 +816,27 @@ footer{background:#0c0a0d;color:#e9dfd1;border-top:1px solid rgba(214,180,119,.1
  .product-detail-section{padding-top:22px!important}
  .detail-main-image img{object-fit:contain!important}
 }
+
+
+/* Compact preset size selector */
+.size-choice{margin:14px 0}
+.size-choice>label,.custom-size-wrap label{display:block;font-size:11px;font-weight:600;margin-bottom:8px}
+.size-preset-grid{display:flex;flex-wrap:wrap;gap:5px}
+.size-preset{min-width:30px;height:30px;padding:3px 5px;border:1px solid #d7d0c8;background:#fff;color:#25211e;font:500 10px/1 "DM Sans",sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:2px}
+.size-preset small{font-size:7px;opacity:.7}
+.size-preset.active{background:#191715;color:#fff;border-color:#191715}
+.size-preset.size-custom{min-width:49px}
+.custom-size-wrap{margin-top:9px}
+.custom-size-wrap[hidden]{display:none!important}
+.custom-size-wrap input{width:100%;max-width:160px;height:30px;border:1px solid #d7d0c8;padding:5px 8px;font:11px "DM Sans",sans-serif}
+@media(min-width:761px){
+ .size-choice>label,.custom-size-wrap label{font-size:8px;margin-bottom:6px}
+ .size-preset{min-width:27px;height:28px;font-size:8px}
+ .size-preset small{font-size:6px}
+ .size-preset.size-custom{min-width:43px}
+ .custom-size-wrap input{height:27px;font-size:9px}
+}
+@media(max-width:760px){
+ .size-preset{min-width:34px;height:34px;font-size:11px}
+ .size-preset.size-custom{min-width:54px}
+}
