@@ -99,6 +99,14 @@
     nav.classList.toggle("open");
     $("#menuToggle").setAttribute("aria-expanded", String(nav.classList.contains("open")));
   });
+  // Home selected from the header should skip only the intro animation for this navigation.
+  // A normal browser reload still plays the intro as before.
+  const headerHomeLink = $("#navLinks a[href=\"index.html\"]");
+  if (headerHomeLink) {
+    headerHomeLink.addEventListener("click", () => {
+      try { sessionStorage.setItem("pfSkipIntroOnce", "1"); } catch (e) {}
+    });
+  }
   const collectionsToggle = $("#collectionsToggle");
   const collectionsMenu = $("#collectionsMenu");
   if (collectionsToggle && collectionsMenu) {
