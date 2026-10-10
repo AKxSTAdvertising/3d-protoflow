@@ -49,6 +49,11 @@
         </div>
       </div>
     </header>`);
+  // Remove the legacy duplicate menu seen in the live header; preserve the arrow dropdown.
+  $$("#navLinks .collection-menu, .site-header .collection-menu").forEach(el => el.remove());
+  $$("#navLinks > a").forEach(link => {
+    if (link.textContent.trim().toLowerCase() === "collections" || link.getAttribute("href") === "collections.html") link.remove();
+  });
   // Safety cleanup: remove any legacy direct Collections nav link, preserving the dropdown.
   $("#navLinks > a").forEach(link => {
     if (link.textContent.trim().toLowerCase() === "collections" || link.getAttribute("href") === "collections.html") link.remove();
