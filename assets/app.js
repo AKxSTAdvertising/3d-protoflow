@@ -37,11 +37,8 @@
           <div class="nav-dropdown">
             <button class="nav-dropdown-toggle${PAGE === "collections" ? " active" : ""}" id="collectionsToggle" aria-expanded="false" aria-controls="collectionsMenu">Collections</button>
             <div class="nav-dropdown-menu" id="collectionsMenu">
-              <a href="divine-creations.html?category=divine-creations">Divine Creations</a>
-              <a href="home-decor.html?category=decor">Home Decor</a>
-              <a href="miniatures.html?category=miniatures">Miniatures &amp; Collectibles</a>
-              <a href="functional-utility.html?category=functional">Functional &amp; Utility</a>
-              <a href="gifts-personalised.html?category=gifts">Gifts &amp; Personalised</a>
+              <a href="collections.html">All Collections</a>
+              <a href="collections.html#shop">Shop Products</a>
             </div>
           </div>
         </nav>
@@ -52,15 +49,6 @@
         </div>
       </div>
     </header>`);
-  // Remove the legacy duplicate menu seen in the live header; preserve the arrow dropdown.
-  $$("#navLinks .collection-menu, .site-header .collection-menu").forEach(el => el.remove());
-  $$("#navLinks > a").forEach(link => {
-    if (link.textContent.trim().toLowerCase() === "collections" || link.getAttribute("href") === "collections.html") link.remove();
-  });
-  // Safety cleanup: remove any legacy direct Collections nav link, preserving the dropdown.
-  $("#navLinks > a").forEach(link => {
-    if (link.textContent.trim().toLowerCase() === "collections" || link.getAttribute("href") === "collections.html") link.remove();
-  });
 
   document.body.insertAdjacentHTML("beforeend", `
     <footer>
