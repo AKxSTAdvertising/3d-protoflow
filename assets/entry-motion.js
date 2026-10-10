@@ -31,6 +31,7 @@
     document.body.classList.remove("pf-entering");
     window.setTimeout(() => intro.remove(), 950);
   };
-  window.setTimeout(leave, 5600);
+  const reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  window.setTimeout(leave, reduced ? 250 : 3900);
   intro.addEventListener("click", leave, { once: true });
 })();
