@@ -431,7 +431,7 @@
         <article class="collection-card collection-card-clickable" role="link" tabindex="0" aria-label="Open ${escapeHTML(cat.title)} collection" data-collection-url="${categoryPageUrl(cat.id)}">
           <div class="collection-placeholder"></div>
           ${cat.image ? `<img src="${escapeHTML(imgSrc(cat.image))}" alt="${escapeHTML(cat.title)}" onerror="this.style.display='none'">` : ""}
-          <div class="collection-info"><small>Collection ${num(i + 1)}</small><h3>${escapeHTML(cat.title)}</h3><a href="${categoryPageUrl(cat.id)}">Explore collection ↗</a></div>
+          <div class="collection-info"><small>Collection ${num(i + 1)}</small><h3>${escapeHTML(cat.title)}</h3></div>
         </article>`).join("") + `
         <article class="collection-card collection-card-clickable" role="link" tabindex="0" aria-label="Open custom creations contact page" data-collection-url="contact.html">
           <div class="collection-placeholder"></div>
