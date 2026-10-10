@@ -1454,3 +1454,13 @@ body[data-page="category"] .product-actions .add-btn{background:#39271b;color:#f
 body[data-page="category"] .product-actions .icon-btn,body[data-page="category"] .product-action-link{color:var(--pf-ink,#35291f);border-color:var(--pf-edge,#d0b99a)}
 @media(max-width:900px){.category-directory{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:600px){.category-directory{grid-template-columns:1fr}.category-directory-card{min-height:90px;padding:18px}.category-page-banner{padding-top:125px;padding-bottom:54px}}
+
+
+/* Reliable click-to-open Collections dropdown on desktop and mobile */
+.nav-dropdown{z-index:500;position:relative}
+.nav-dropdown-toggle{pointer-events:auto;cursor:pointer}
+.nav-dropdown-menu.open{display:grid!important;visibility:visible!important;opacity:1!important;pointer-events:auto!important;z-index:1000!important}
+.nav-dropdown-menu{pointer-events:auto}
+@media(max-width:760px){
+  .nav-dropdown-menu.open{display:grid!important;position:static!important}
+}
