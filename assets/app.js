@@ -38,14 +38,6 @@
             const navLabel = id === "about" ? "About us" : id === "contact" ? "Contact us" : label;
             return `<a href="${href}"${id === PAGE ? ' class="active" aria-current="page"' : ""}>${navLabel}</a>`;
           }).join("")}
-
-              <a href="divine-creations.html">Divine Creations</a>
-              <a href="home-decor.html">Home Decor</a>
-              <a href="miniatures-collectibles.html">Miniatures &amp; Collectibles</a>
-              <a href="functional-utility.html">Functional &amp; Utility</a>
-              <a href="gifts-personalised.html">Gifts &amp; Personalised</a>
-            </div>
-          </div>
         </nav>
         <div class="nav-actions">
           <a class="icon-btn" id="searchLink" href="collections.html?search=1" aria-label="Search products"><svg viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.5"/><path d="m16 16 4 4"/></svg></a>
