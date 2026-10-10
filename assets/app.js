@@ -36,7 +36,7 @@
           <a href="index.html"${PAGE === "home" ? ' class="active" aria-current="page"' : ""}>Home</a>
           <div class="nav-dropdown">
             <a href="collections.html"${PAGE === "collections" ? ' class="active" aria-current="page"' : ""}>Collection</a>
-            <button class="nav-dropdown-toggle" id="collectionsToggle" aria-label="Open collection categories" aria-expanded="false" aria-controls="collectionsMenu">⌄</button>
+            <button class="nav-dropdown-toggle" id="collectionsToggle" aria-label="Open collection categories" aria-expanded="false" aria-controls="collectionsMenu"></button>
             <div class="nav-dropdown-menu" id="collectionsMenu">
               <a href="divine-creations.html">Divine Creations</a>
               <a href="home-decor.html">Home Decor</a>
