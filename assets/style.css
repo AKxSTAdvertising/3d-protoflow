@@ -1318,3 +1318,113 @@ body[data-page="home"] .newsletter-form input {
   color:#35291f!important;
   border-color:#d0b99a!important;
 }
+
+
+/* SITE-WIDE PALE-SURFACE CONSISTENCY
+   Use the same warm ivory as Recommended Products on every page, not only Home. */
+:root{
+  --pf-ivory:#f5f1e8;
+  --pf-card:#eae2d4;
+  --pf-card-image:#dfcbb0;
+  --pf-ink:#35291f;
+  --pf-muted-ink:#796a59;
+  --pf-edge:#d0b99a;
+}
+body:not([data-page="home"]) .page-banner,
+body:not([data-page="home"]) .section.story,
+body:not([data-page="home"]) .section.process,
+body:not([data-page="home"]) .section.shop,
+body:not([data-page="home"]) .section.contact,
+body:not([data-page="home"]) .section.how,
+body:not([data-page="home"]) .section.newsletter,
+body:not([data-page="home"]) .section.collections,
+body:not([data-page="home"]) .section.featured,
+body:not([data-page="home"]) .section.recommended-section,
+body:not([data-page="home"]) .recommended-section,
+body:not([data-page="home"]) .contact-grid,
+body:not([data-page="home"]) .info-card,
+body:not([data-page="home"]) .form-card {
+  background:var(--pf-ivory)!important;
+  color:var(--pf-ink)!important;
+}
+body:not([data-page="home"]) .page-banner h1,
+body:not([data-page="home"]) .page-banner p,
+body:not([data-page="home"]) .section-head h2,
+body:not([data-page="home"]) .section-head p,
+body:not([data-page="home"]) .story-copy h2,
+body:not([data-page="home"]) .story-copy>p,
+body:not([data-page="home"]) .process-card h3,
+body:not([data-page="home"]) .process-card p,
+body:not([data-page="home"]) .info-card h3,
+body:not([data-page="home"]) .info-card p,
+body:not([data-page="home"]) .form-card h2,
+body:not([data-page="home"]) .form-card label,
+body:not([data-page="home"]) .contact-grid h2,
+body:not([data-page="home"]) .contact-grid h3 {
+  color:var(--pf-ink)!important;
+}
+body:not([data-page="home"]) .section-head p,
+body:not([data-page="home"]) .story-copy>p,
+body:not([data-page="home"]) .process-card p,
+body:not([data-page="home"]) .info-card p,
+body:not([data-page="home"]) .form-card .form-note {
+  color:var(--pf-muted-ink)!important;
+}
+body:not([data-page="home"]) .info-card,
+body:not([data-page="home"]) .form-card,
+body:not([data-page="home"]) .process-card,
+body:not([data-page="home"]) .contact-grid .contact-card {
+  background:var(--pf-card)!important;
+  border-color:var(--pf-edge)!important;
+}
+body:not([data-page="home"]) .story-image,
+body:not([data-page="home"]) .product-image,
+body:not([data-page="home"]) .detail-main-image {
+  background:var(--pf-card-image)!important;
+}
+body:not([data-page="home"]) .shop-toolbar input,
+body:not([data-page="home"]) .shop-toolbar select,
+body:not([data-page="home"]) .field input,
+body:not([data-page="home"]) .field textarea,
+body:not([data-page="home"]) .field select,
+body:not([data-page="home"]) .form-card input,
+body:not([data-page="home"]) .form-card textarea,
+body:not([data-page="home"]) .form-card select {
+  background:#fffaf3!important;
+  color:var(--pf-ink)!important;
+  border-color:var(--pf-edge)!important;
+}
+body:not([data-page="home"]) .field input::placeholder,
+body:not([data-page="home"]) .field textarea::placeholder,
+body:not([data-page="home"]) .form-card input::placeholder,
+body:not([data-page="home"]) .form-card textarea::placeholder {
+  color:#8b7a67!important;
+}
+body:not([data-page="home"]) .chips .chip {
+  background:var(--pf-card)!important;
+  border-color:var(--pf-edge)!important;
+  color:var(--pf-ink)!important;
+}
+body:not([data-page="home"]) .chips .chip.active,
+body:not([data-page="home"]) .chips .chip:hover {
+  background:#39271b!important;
+  border-color:#39271b!important;
+  color:#fffaf3!important;
+}
+/* Product detail page keeps its deliberate dark showroom details panel;
+   only its pale surrounding panels/cards follow the ivory palette. */
+body[data-page="product"] .product-detail-section {
+  background:#100d10!important;
+  color:#f4eee5!important;
+}
+body[data-page="product"] .recommended-section {
+  background:var(--pf-ivory)!important;
+  color:var(--pf-ink)!important;
+}
+body[data-page="product"] .recommended-section #recommendedGrid .product-card {
+  background:var(--pf-card)!important;
+  border-color:var(--pf-edge)!important;
+}
+body[data-page="product"] .recommended-section #recommendedGrid .product-image {
+  background:var(--pf-card-image)!important;
+}
