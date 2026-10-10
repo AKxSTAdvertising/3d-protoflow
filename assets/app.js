@@ -34,13 +34,6 @@
         <a class="brand" href="index.html" aria-label="PROTOFLOW 3D home">${logo}</a>
         <nav class="nav-links" id="navLinks" aria-label="Main navigation">
           ${NAV.filter(([id]) => id !== "collections").map(([id, href, label]) => `<a href="${href}"${id === PAGE ? ' class="active" aria-current="page"' : ""}>${label}</a>`).join("")}
-          <div class="nav-dropdown">
-            <button class="nav-dropdown-toggle${PAGE === "collections" ? " active" : ""}" id="collectionsToggle" aria-expanded="false" aria-controls="collectionsMenu">Collections</button>
-            <div class="nav-dropdown-menu" id="collectionsMenu">
-              <a href="collections.html">All Collections</a>
-              <a href="collections.html#shop">Shop Products</a>
-            </div>
-          </div>
         </nav>
         <div class="nav-actions">
           <a class="icon-btn" id="searchLink" href="collections.html?search=1" aria-label="Search products"><svg viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.5"/><path d="m16 16 4 4"/></svg></a>
@@ -89,23 +82,11 @@
   $$("[data-wa]").forEach(a => { a.href = waLink(a.dataset.wa); a.target = "_blank"; a.rel = "noopener"; });
   $$("[data-mail]").forEach(a => { a.href = "mailto:" + CONFIG.businessEmail; });
 
-  // Mobile menu and accessible Collections dropdown
+  // Mobile menu
   $("#menuToggle").addEventListener("click", () => {
     const nav = $("#navLinks");
     nav.classList.toggle("open");
     $("#menuToggle").setAttribute("aria-expanded", String(nav.classList.contains("open")));
-  });
-  const collectionsToggle = $("#collectionsToggle");
-  const collectionsMenu = $("#collectionsMenu");
-  collectionsToggle.addEventListener("click", () => {
-    const open = collectionsMenu.classList.toggle("open");
-    collectionsToggle.setAttribute("aria-expanded", String(open));
-  });
-  document.addEventListener("click", e => {
-    if (!e.target.closest(".nav-dropdown")) {
-      collectionsMenu.classList.remove("open");
-      collectionsToggle.setAttribute("aria-expanded", "false");
-    }
   });
 
   /* ---------- toast + popup ---------- */
